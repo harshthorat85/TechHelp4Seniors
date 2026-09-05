@@ -1,0 +1,1578 @@
+!DOCTYPE html
+html lang=en
+head
+meta charset=utf-8
+meta name=viewport content=width=device-width, initial-scale=1
+titleTech Help — plain answers to everyday questionstitle
+link rel=preconnect href=httpsfonts.googleapis.com
+link rel=preconnect href=httpsfonts.gstatic.com crossorigin
+link href=httpsfonts.googleapis.comcss2family=Atkinson+Hyperlegibleital,wght@0,400;0,700;1,400&display=swap rel=stylesheet
+style
+root{
+  --paper#FAF8F4;
+  --card#FFFFFF;
+  --hover#FFFDF7;
+  --ink#1A1714;
+  --slate#4C463F;
+  --line#D9D2C7;
+  --signal#9C2F1A;
+  --signal-dark#7A2314;
+  --on-signal#FFFFFF;
+  --amber#E3A21C;
+  --focus#0E6E8C;
+  --radius10px;
+  font-size21px;
+}
+
+html.dark{
+  --paper#17150F;
+  --card#221F18;
+  --hover#2C2820;
+  --ink#F3EEE4;
+  --slate#BEB5A6;
+  --line#433D32;
+  --signal#E8845F;
+  --signal-dark#F3A183;
+  --on-signal#17150F;
+  --amber#F0BC4E;
+  --focus#74CBEA;
+}
+
+html.contrast{
+  --paper#FFFFFF;
+  --card#FFFFFF;
+  --hover#EAEAEA;
+  --ink#000000;
+  --slate#000000;
+  --line#000000;
+  --signal#000000;
+  --signal-dark#000000;
+  --on-signal#FFFFFF;
+  --amber#000000;
+  --focus#0044CC;
+}
+
+{box-sizingborder-box}
+html,body{margin0;padding0}
+
+body{
+  backgroundvar(--paper);
+  colorvar(--ink);
+  font-familyAtkinson Hyperlegible,Verdana,Tahoma,Segoe UI,system-ui,sans-serif;
+  font-size1rem;
+  line-height1.6;
+  -webkit-text-size-adjust100%;
+}
+
+ ---------- top bar ---------- 
+.bar{
+  positionsticky;top0;z-index50;
+  backgroundvar(--card);
+  border-bottom3px solid var(--ink);
+  padding.6rem 1rem;
+  displayflex;align-itemscenter;gap.9rem 1.4rem;flex-wrapwrap;
+}
+.brand{
+  font-weight700;font-size1.15rem;letter-spacing-.01em;
+  backgroundnone;border0;padding.3rem .1rem;cursorpointer;colorvar(--ink);
+  font-familyinherit;
+}
+.brandhover{colorvar(--signal)}
+.tools{margin-leftauto;displayflex;align-itemscenter;gap1.4rem;flex-wrapwrap}
+.toolset{displayflex;align-itemscenter;gap.4rem}
+.tool-label{font-size.8rem;colorvar(--slate);white-spacenowrap}
+
+.tbtn{
+  font-familyinherit;font-size.95rem;font-weight700;
+  min-height52px;min-width52px;padding0 .8rem;
+  backgroundvar(--card);colorvar(--ink);
+  border2px solid var(--ink);border-radius8px;cursorpointer;
+}
+.tbtnhover{backgroundvar(--ink);colorvar(--card)}
+.tbtn[aria-pressed=true]{backgroundvar(--ink);colorvar(--card)}
+.tbtndisabled{opacity.35;cursordefault}
+.tbtndisabledhover{backgroundvar(--card);colorvar(--ink)}
+
+focus-visible{outline4px solid var(--focus);outline-offset3px}
+
+ ---------- layout ---------- 
+main{max-width56rem;margin0 auto;padding2rem 1rem 6rem}
+
+h1{
+  font-size2.1rem;line-height1.15;font-weight700;
+  margin.4rem 0 1.4rem;letter-spacing-.02em;max-width22ch;
+}
+h2{font-size1.4rem;line-height1.25;margin2.6rem 0 1rem;font-weight700}
+h2first-of-type{margin-top2rem}
+
+ ---------- search ---------- 
+.search-wrap{positionrelative;margin-bottom1.2rem}
+#search{
+  width100%;min-height74px;
+  font-familyinherit;font-size1.15rem;
+  padding0 1rem 0 3.4rem;
+  border3px solid var(--ink);border-radiusvar(--radius);
+  backgroundvar(--card);colorvar(--ink);
+}
+#searchplaceholder{colorvar(--slate);opacity.85}
+.search-wrap  svg{
+  positionabsolute;left1.1rem;top50%;transformtranslateY(-50%);
+  width1.4rem;height1.4rem;pointer-eventsnone;colorvar(--slate);
+}
+
+.devices{displayflex;gap.5rem;flex-wrapwrap;margin-bottom2.4rem;align-itemscenter}
+.devices  span{font-size.9rem;colorvar(--slate);margin-right.2rem}
+
+ ---------- category grid ---------- 
+.grid{displaygrid;grid-template-columnsrepeat(auto-fill,minmax(14rem,1fr));gap1rem}
+.cat{
+  displayflex;flex-directioncolumn;gap.5rem;
+  text-alignleft;font-familyinherit;colorvar(--ink);
+  backgroundvar(--card);
+  border2px solid var(--line);
+  border-left10px solid var(--catcolor,var(--signal));
+  border-radiusvar(--radius);
+  padding1.1rem;min-height9rem;cursorpointer;
+}
+.cathover{border-colorvar(--ink);border-left-colorvar(--catcolor,var(--signal));backgroundvar(--hover)}
+.cat-icon{width2.1rem;height2.1rem;colorvar(--catcolor,var(--signal))}
+.cat-name{font-size1.15rem;font-weight700;line-height1.25}
+.cat-count{font-size.85rem;colorvar(--slate);margin-topauto}
+
+ ---------- guide list ---------- 
+.list{list-stylenone;padding0;margin0;displayflex;flex-directioncolumn;gap.7rem}
+.item{
+  width100%;displayflex;align-itemscenter;gap1rem;
+  text-alignleft;font-familyinherit;colorvar(--ink);
+  backgroundvar(--card);border2px solid var(--line);border-radiusvar(--radius);
+  padding1.05rem 1.2rem;min-height76px;cursorpointer;
+}
+.itemhover{border-colorvar(--ink);backgroundvar(--hover)}
+.item-title{font-size1.08rem;font-weight700;line-height1.3}
+.item-cat{font-size.82rem;colorvar(--slate);margin-top.15rem}
+.item-arrow{margin-leftauto;width1.4rem;height1.4rem;flex-shrink0;colorvar(--slate)}
+
+.badge{
+  displayinline-block;font-size.78rem;font-weight700;
+  padding.18rem .55rem;border2px solid var(--ink);border-radius99px;
+  margin-right.35rem;white-spacenowrap;
+}
+
+ ---------- back ---------- 
+.back{
+  displayinline-flex;align-itemscenter;gap.6rem;
+  font-familyinherit;font-size1.02rem;font-weight700;
+  backgroundvar(--card);colorvar(--ink);
+  border2px solid var(--ink);border-radius8px;
+  min-height58px;padding0 1.1rem;cursorpointer;margin-bottom1.6rem;
+}
+.backhover{backgroundvar(--ink);colorvar(--card)}
+.back svg{width1.2rem;height1.2rem}
+
+ ---------- guide page ---------- 
+.guide-meta{displayflex;gap.4rem;flex-wrapwrap;margin-bottom1.6rem}
+.summary{
+  font-size1.03rem;colorvar(--slate);
+  border-left5px solid var(--amber);padding-left1rem;
+  margin0 0 2.2rem;max-width60ch;
+}
+
+ol.steps{list-stylenone;padding0;margin0 0 2.4rem;counter-resets}
+ol.steps li{counter-increments;positionrelative;padding0 0 1.7rem 4.1rem;max-width60ch}
+ol.steps libefore{
+  contentcounter(s);
+  positionabsolute;left0;top-.15rem;
+  width2.7rem;height2.7rem;border-radius50%;
+  backgroundvar(--ink);colorvar(--paper);
+  displayflex;align-itemscenter;justify-contentcenter;
+  font-weight700;font-size1.12rem;
+}
+ol.steps liafter{
+  content;positionabsolute;left1.32rem;top2.9rem;bottom.35rem;
+  width3px;backgroundvar(--line);
+}
+ol.steps lilast-childafter{displaynone}
+ol.steps lilast-child{padding-bottom0}
+.step-do{font-size1.08rem;font-weight700;line-height1.45}
+.step-note{font-size.96rem;colorvar(--slate);margin-top.3rem;line-height1.55}
+.ui{font-weight700;colorvar(--signal);border-bottom2px dotted var(--signal)}
+
+.note{
+  border2px solid var(--line);border-left8px solid var(--amber);
+  border-radiusvar(--radius);backgroundvar(--card);
+  padding1.05rem 1.3rem;margin0 0 1.2rem;max-width60ch;
+}
+.note-heading{font-weight700;margin0 0 .35rem;font-size1rem}
+.note p{margin0;font-size.96rem;colorvar(--slate);line-height1.55}
+.note.warn{border-left-colorvar(--signal)}
+
+.actions{displayflex;gap.7rem;flex-wrapwrap;margin-top2.4rem}
+.print{
+  font-familyinherit;font-size1.02rem;font-weight700;
+  min-height60px;padding0 1.5rem;
+  backgroundvar(--signal);colorvar(--on-signal);
+  border2px solid var(--signal);border-radius8px;cursorpointer;
+  displayinline-flex;align-itemscenter;gap.6rem;
+}
+.printhover{backgroundvar(--signal-dark);border-colorvar(--signal-dark)}
+.print svg{width1.3rem;height1.3rem}
+
+.empty{
+  border3px dashed var(--line);border-radiusvar(--radius);
+  padding2.5rem 1.5rem;text-aligncenter;colorvar(--slate);
+}
+.empty strong{displayblock;colorvar(--ink);font-size1.2rem;margin-bottom.5rem}
+
+footer{
+  max-width56rem;margin0 auto;padding2rem 1rem 4rem;
+  border-top2px solid var(--line);colorvar(--slate);font-size.9rem;
+}
+footer p{max-width62ch}
+
+@media (max-width44rem){
+  .tools{width100%;margin-left0;gap1rem}
+}
+@media (max-width34rem){
+  h1{font-size1.72rem}
+  main{padding-top1.4rem}
+  .tbtn{font-size.9rem;padding0 .65rem}
+}
+@media (prefers-reduced-motionno-preference){
+  .cat,.item,.tbtn,.back,.print{transitionbackground-color .12s,color .12s,border-color .12s}
+}
+
+ ---------- print always light, always readable ---------- 
+@media print{
+  html,html.dark,html.contrast{
+    --paper#fff;--card#fff;--ink#000;--slate#222;--line#999;
+    --signal#000;--amber#000;--on-signal#fff;
+    font-size15pt;
+  }
+  .bar,.actions,.back,footer,.search-wrap,.devices,.related{displaynone!important}
+  body{background#fff;color#000}
+  main{padding0;max-widthnone}
+  ol.steps libefore{background#000!important;color#fff!important;print-color-adjustexact;-webkit-print-color-adjustexact}
+  ol.steps li{page-break-insideavoid}
+  .ui{color#000;border-bottom1px dotted #000}
+  .note{border1.5pt solid #000;border-left5pt solid #000}
+}
+style
+head
+body
+
+header class=bar
+  button class=brand id=home-linkTech Helpbutton
+  div class=tools
+    div class=toolset
+      span class=tool-labelText sizespan
+      button class=tbtn id=smaller aria-label=Make text smallerA&minus;button
+      button class=tbtn id=bigger aria-label=Make text biggerA+button
+    div
+    div class=toolset
+      span class=tool-labelColoursspan
+      button class=tbtn theme data-theme=light aria-pressed=trueLightbutton
+      button class=tbtn theme data-theme=dark aria-pressed=falseDarkbutton
+      button class=tbtn theme data-theme=contrast aria-pressed=falseHigh contrastbutton
+    div
+  div
+header
+
+main id=view tabindex=-1main
+
+footer
+  pMenu names change between phone models and software updates. If a step doesn’t match what’s on your screen, look for wording close to the words in bold — it is almost always in the same place.p
+footer
+
+script
+ ============================================================
+   ICONS
+   ============================================================ 
+const ICONS = {
+  tap'circle cx=12 cy=12 r=3.2path d=M12 3.5v2.6M12 17.9v2.6M3.5 12h2.6M17.9 12h2.6',
+  eye'circle cx=12 cy=12 r=3.2path d=M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z',
+  phone'path d=M6.5 3h3l1.6 4-2 1.5a12 12 0 0 0 6.4 6.4l1.5-2 4 1.6v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z',
+  chat'path d=M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5Z',
+  video'rect x=2.5 y=6 width=12 height=12 rx=2.5path d=M14.5 11l6-3.5v9l-6-3.5',
+  mail'rect x=2.5 y=5 width=19 height=14 rx=2.5path d=M3 7l9 6 9-6',
+  wifi'path d=M2.5 9a15 15 0 0 1 19 0path d=M6 12.5a10 10 0 0 1 12 0path d=M9.5 16a5 5 0 0 1 5 0circle cx=12 cy=19.5 r=1.2 fill=currentColor',
+  bell'path d=M6 9.5a6 6 0 0 1 12 0c0 4 1.6 5.6 2 6H4c.4-.4 2-2 2-6Zpath d=M9.8 19a2.3 2.3 0 0 0 4.4 0',
+  pin'path d=M12 21s7-6.3 7-11a7 7 0 0 0-14 0c0 4.7 7 11 7 11Zcircle cx=12 cy=10 r=2.6',
+  shield'path d=M12 2.5l8 3v6c0 5-3.4 8.9-8 10-4.6-1.1-8-5-8-10v-6Zpath d=M9 12l2.2 2.2L15.5 10',
+  wrench'path d=M15.5 3a5.5 5.5 0 0 0-5 7.7L3 18.2 5.8 21l7.5-7.5A5.5 5.5 0 1 0 15.5 3Zcircle cx=16.5 cy=7.5 r=1.4 fill=currentColor',
+  search'circle cx=10.5 cy=10.5 r=6.5path d=M15.5 15.5L21 21',
+  arrow'path d=M9 5l7 7-7 7',
+  back'path d=M15 5l-7 7 7 7',
+  printer'path d=M7 9V3.5h10V9rect x=3.5 y=9 width=17 height=7.5 rx=2rect x=7 y=14.5 width=10 height=6'
+};
+function icon(name, cls){
+  return 'svg class='+(cls'')+' viewBox=0 0 24 24 fill=none stroke=currentColor '+
+         'stroke-width=2.2 stroke-linecap=round stroke-linejoin=round aria-hidden=true'+
+         ICONS[name]+'svg';
+}
+
+ ============================================================
+   CATEGORIES
+   ============================================================ 
+const CATS = [
+  {id'basics', name'The basics',            icon'tap',    c'#8A4B12', d'#E3A468'},
+  {id'see',    name'Seeing and hearing',    icon'eye',    c'#9C2F1A', d'#F09272'},
+  {id'call',   name'Phone calls',           icon'phone',  c'#B4610E', d'#F0A960'},
+  {id'text',   name'Texting and photos',    icon'chat',   c'#7E6A00', d'#D9BE45'},
+  {id'video',  name'Video calls',           icon'video',  c'#4E6B12', d'#A9C86A'},
+  {id'mail',   name'Email',                 icon'mail',   c'#1B6B5C', d'#6CC6B2'},
+  {id'net',    name'Wi-Fi and internet',    icon'wifi',   c'#1D5C82', d'#7CC0E2'},
+  {id'daily',  name'Everyday helpers',      icon'bell',   c'#5B3E8C', d'#B9A0E4'},
+  {id'out',    name'Out and about',         icon'pin',    c'#9E2E63', d'#EE8FB6'},
+  {id'safe',   name'Staying safe',          icon'shield', c'#3C4A6B', d'#9DB0DC'},
+  {id'fix',    name'When something breaks', icon'wrench', c'#5A5750', d'#BDB6A6'}
+];
+
+const DEVICES = [
+  {id'all',     name'Show all'},
+  {id'iphone',  name'iPhone  iPad'},
+  {id'android', name'Android'},
+  {id'windows', name'Windows PC'},
+  {id'mac',     name'Mac'}
+];
+const DEVNAME = {iphone'iPhone  iPad',android'Android',windows'Windows PC',mac'Mac',any'Any device'};
+
+ ============================================================
+   GUIDES
+   Words in {curly braces} render as on-screen labels.
+   star1  puts a guide in Asked most often on the home page.
+   ============================================================ 
+const GUIDES = [
+
+ ======================= THE BASICS ======================= 
+{id'b-buttons-iphone', cat'basics', dev'iphone', title'What the buttons on an iPhone actually do',
+ keys'buttons side power volume home silent switch what does',
+ summary'There are only four things to press on the outside of the phone. Everything else happens on the screen.',
+ steps[
+  {do'The long button on the {right side} turns the screen on and off.', note'One press puts the phone to sleep. Press it again to wake it. It does not switch the phone off — that takes a long hold.'},
+  {do'The two buttons on the {left side} make the sound louder and quieter.', note'The upper one is louder. They change whatever is playing at that moment.'},
+  {do'Above them is the {silent switch} or a small button.', note'If you can see an orange stripe, the ringer is off. Flick it back the other way to hear calls again.'},
+  {do'If your phone has a {round button} at the bottom, that is the Home button.', note'One press always takes you back to the main screen. It is the safest button on the phone — you cannot break anything with it.'},
+  {do'If there is no round button, {swipe up} from the very bottom edge instead.', note'Start your finger slightly off the glass and push up. That does the same job.'}
+ ]},
+{id'b-buttons-android', cat'basics', dev'android', title'What the buttons on an Android phone actually do',
+ keys'buttons side power volume back home what does navigation',
+ steps[
+  {do'The {power button} on the side turns the screen on and off.', note'A quick press sleeps and wakes it. Holding it down brings up the option to switch off or restart.'},
+  {do'The {volume buttons} make sound louder and quieter.'},
+  {do'At the bottom of the screen you have either three shapes or a thin bar.', note'The three shapes are back, home, and recent apps.'},
+  {do'The {back arrow} undoes your last move.', note'This is the most useful control on an Android phone. If you end up somewhere confusing, press it until you recognise where you are.'},
+  {do'The {circle} or a swipe up from the bottom takes you home.'}
+ ]},
+{id'b-gestures', cat'basics', dev'any', title'Tap, swipe, and press-and-hold — what each one means',
+ keys'tap swipe hold long press gestures touch screen how to use finger',
+ summary'Almost everything on a touchscreen is one of these three moves. Knowing which one is being asked for solves a great deal.',
+ steps[
+  {do'{Tap} means one quick touch, then lift your finger straight off.', note'The commonest mistake is resting the finger too long. Touch and lift, like testing whether a kettle is hot.'},
+  {do'{Swipe} means touch and slide before lifting.', note'Used to scroll down a page, or to move between screens. Slow swipes work as well as fast ones.'},
+  {do'{Press and hold} means touch and keep your finger still for about two seconds.', note'This brings up extra choices — copy, delete, share. Useful once you know it, alarming when it happens by accident.'},
+  {do'{Double tap} is two quick taps in the same spot.', note'Often zooms in on a photo or a webpage.'},
+  {do'If nothing responds, try pressing more slowly rather than harder.', note'Touchscreens read the warmth and moisture of your skin, not pressure. Pressing harder never helps. Dry or cool fingertips do sometimes fail to register — warming your hands genuinely works.'}
+ ]},
+{id'b-home', cat'basics', dev'any', title'Find an app that has disappeared from your home screen',
+ keys'app missing lost gone icon cannot find home screen where',
+ summary'Apps rarely delete themselves. They are almost always just on another page or in a folder.',
+ steps[
+  {do'Swipe left across the home screen a few times.', note'Phones have several pages of apps side by side. The dots near the bottom show how many.'},
+  {do'On an iPhone swipe {down} from the middle of the screen and type the app name.', note'Start in the middle, not from the very top edge. A search box appears with a keyboard.'},
+  {do'On Android swipe {up} from the bottom to open the full list of apps.', note'This drawer holds everything installed, whether or not it is on a home screen.'},
+  {do'Look inside folders.', note'A folder is a small square with several tiny icons in it. Tap it to open.'},
+  {do'To put it back on the home screen, press and hold the app, then drag it where you want it.'}
+ ]},
+{id'b-keyboard', cat'basics', dev'any', title'Using the keyboard without the typing errors',
+ keys'keyboard typing mistakes capital letters numbers symbols autocorrect',
+ steps[
+  {do'Tap the {up arrow} once for a single capital letter.', note'Tap it twice for CAPITALS ALL THE WAY until you tap it again.'},
+  {do'Tap {123} to reach numbers and punctuation.', note'Tap {ABC} in the same corner to come back to letters.'},
+  {do'To fix a mistake, tap the spot just after the wrong letter, then use the {backspace} key.', note'Backspace is the arrow with an x in it, top right.'},
+  {do'Press and hold a letter to see its accented versions.', note'Holding e gives é, è, ê and so on. Slide your finger to the one you want before lifting.'},
+  {do'Press and hold the {space bar} to move the cursor.', note'The keyboard goes blank and becomes a trackpad. Slide your finger to place the cursor exactly. This is far easier than poking at the text.'}
+ ],
+ note{h'Autocorrect changing your words', p'When it changes a word you meant, tap the backspace once immediately and it usually restores what you typed. On an iPhone you can turn it off entirely Settings, General, Keyboard, Auto-Correction.'}},
+{id'b-dictate', cat'basics', dev'any', title'Talk instead of typing', star1,
+ keys'dictate voice typing speak microphone arthritis hands talk text',
+ summary'If typing is slow or your hands are sore, the phone will write down what you say. It is accurate now, and it works in any app where you can type.',
+ steps[
+  {do'Tap where you would normally type, so the keyboard comes up.'},
+  {do'Tap the small {microphone} icon on the keyboard.', note'On an iPhone it is bottom right, beside the space bar. On Android it is usually top right of the keyboard.'},
+  {do'Speak at your normal pace.', note'You do not need to slow down or raise your voice. Talking normally gives better results than over-enunciating.'},
+  {do'Say punctuation out loud where you want it.', note'Say comma, full stop, question mark, new line. The words will not be typed — they become the marks.'},
+  {do'Tap the microphone again, or the keyboard icon, when you are finished.'}
+ ]},
+{id'b-install-iphone', cat'basics', dev'iphone', title'Install a new app on an iPhone',
+ keys'install download app store get new app add',
+ steps[
+  {do'Tap the {App Store} icon — a blue circle with a white A made of drawing tools.'},
+  {do'Tap {Search} at the bottom right, then type the name of the app.'},
+  {do'Find it in the list and tap {Get}.', note'Check the makeru2019s name underneath. Copycat apps with similar names and icons are common.'},
+  {do'Confirm with Face ID, your fingerprint, or your Apple password.', note'Free apps still ask for this. It is not charging you.'},
+  {do'Wait for the circle to fill, then tap {Open}.', note'The app also appears on your home screen from now on.'}
+ ]},
+{id'b-install-android', cat'basics', dev'android', title'Install a new app on an Android phone',
+ keys'install download play store get new app add google',
+ steps[
+  {do'Tap the {Play Store} icon — a white bag or a coloured triangle.'},
+  {do'Tap the search bar at the top and type the name of the app.'},
+  {do'Check the makeru2019s name and the number of reviews before you tap.', note'A genuine well-known app has millions of reviews. A few hundred is a warning sign.'},
+  {do'Tap {Install}.'},
+  {do'Tap {Open} when it finishes.'}
+ ],
+ note{h'Only install from the Play Store', p'If a website or a text message offers you an app to download directly, do not. That is one of the main ways phones get infected.', warntrue}},
+{id'b-delete-app', cat'basics', dev'any', title'Remove an app you don’t want',
+ keys'delete remove uninstall app get rid of clutter',
+ steps[
+  {do'Press and hold the app icon until a menu appears or the icons start to wobble.'},
+  {do'On an iPhone tap {Remove App}, then {Delete App}.'},
+  {do'On Android tap {Uninstall}, then {OK}.', note'If you only see Remove, that takes it off the home screen but leaves it installed. Look for Uninstall.'},
+  {do'Some built-in apps cannot be removed.', note'You can drag those into a folder at the back of the last page instead, so they stop cluttering your main screen.'}
+ ]},
+{id'b-screenshot', cat'basics', dev'any', title'Take a picture of your own screen', star1,
+ keys'screenshot screen shot capture show someone problem picture of screen',
+ summary'Enormously useful. When something confusing appears, capture it and you can show a family member or bring it to us instead of trying to describe it.',
+ steps[
+  {do'On an iPhone with no round button press the {side button} and the {volume up} button at the same time, then let go straight away.'},
+  {do'On an iPhone with a round Home button press the {Home button} and the {side button} together.'},
+  {do'On Android press the {power button} and {volume down} together.', note'A quick press of both. Holding them too long brings up the shutdown menu instead — press the back arrow if that happens.'},
+  {do'The screen flashes white and a small copy appears in the corner.', note'That is your screenshot. It saves into Photos automatically.'},
+  {do'Find it later in {Photos}, in an album called Screenshots.'}
+ ]},
+
+ ================= SEEING AND HEARING ================= 
+{id'see-text-iphone', cat'see', dev'iphone', title'Make the text bigger on an iPhone', star1,
+ keys'font size larger small print reading bigger letters',
+ summary'This makes the writing larger everywhere on the phone at once — in messages, in settings, in most apps.',
+ steps[
+  {do'Open {Settings}.', note'The grey icon with gear wheels. If you cannot find it, swipe down from the middle of the home screen and type settings.'},
+  {do'Tap {Display & Brightness}.'},
+  {do'Tap {Text Size}.'},
+  {do'Drag the slider at the bottom to the right.', note'The sample writing above changes as you drag, so you can judge the size before you decide.'},
+  {do'Leave Settings. The change saves on its own.', note'There is no Save button to press.'}
+ ],
+ note{h'If it is still too small', p'Settings, Accessibility, Display & Text Size, Larger Text. Turn on Larger Accessibility Sizes and the same slider now goes much further.'}},
+{id'see-text-android', cat'see', dev'android', title'Make the text bigger on an Android phone', star1,
+ keys'font size larger small print reading bigger letters samsung pixel',
+ summary'Android phones are made by many companies, so the wording varies a little.',
+ steps[
+  {do'Open {Settings}, then tap {Display}.'},
+  {do'Tap {Font size and style}, or {Display size and text}.', note'Samsung says Font size and style. Google Pixel says Display size and text.'},
+  {do'Drag the slider to the right.'},
+  {do'Tap the back arrow to leave. It saves on its own.'}
+ ],
+ note{h'Two sliders', p'Font size changes only the writing. Display size makes buttons and icons bigger too. Try font size first.'}},
+{id'see-text-windows', cat'see', dev'windows', title'Make the text bigger on a Windows computer',
+ keys'font size larger small print bigger letters pc laptop',
+ steps[
+  {do'Click {Start}, then click {Settings}.', note'Start is the Windows flag in the bottom-left corner. Settings is the gear icon.'},
+  {do'Click {Accessibility} in the list on the left.'},
+  {do'Click {Text size}.'},
+  {do'Drag the slider right, then click {Apply}.', note'The screen may flicker for a moment. That is normal.'}
+ ],
+ note{h'A quicker way for one window', p'Hold Ctrl and press the + key. Ctrl and minus shrinks it back.'}},
+{id'see-text-mac', cat'see', dev'mac', title'Make things bigger on a Mac',
+ keys'font size larger bigger mac apple display resolution zoom',
+ steps[
+  {do'Click the {apple} in the top-left corner, then {System Settings}.'},
+  {do'Click {Displays} in the list on the left.'},
+  {do'Choose one of the {Larger Text} options in the row of previews.', note'The screen resizes immediately so you can judge it.'},
+  {do'For one window only, hold {Command} and press {+}.'}
+ ]},
+{id'see-dark', cat'see', dev'any', title'Turn on dark mode to reduce glare',
+ keys'dark mode night light background black glare eyes tired evening',
+ summary'Dark mode puts light writing on a dark background. Some people find it far easier in the evening; others find it harder to read. Try it and see.',
+ steps[
+  {do'On an iPhone {Settings}, {Display & Brightness}, then tap {Dark}.'},
+  {do'On Android {Settings}, {Display}, then turn on {Dark mode} or {Dark theme}.'},
+  {do'On Windows {Settings}, {Personalisation}, {Colours}, then choose {Dark}.'},
+  {do'On a Mac {System Settings}, {Appearance}, then {Dark}.'},
+  {do'Give it a few days before deciding.', note'If letters look smeared or haloed against the dark background, switch back. That is common with cataracts and it is not something to push through.'}
+ ]},
+{id'see-brightness', cat'see', dev'any', title'Make the screen brighter or dimmer',
+ keys'brightness dim bright screen dark cannot see sunlight',
+ steps[
+  {do'On an iPhone swipe {down} from the top-right corner of the screen.', note'On older iPhones with a Home button, swipe up from the bottom instead.'},
+  {do'On Android swipe {down} from the very top of the screen, twice.'},
+  {do'Find the tall bar with a {sun} symbol and slide it up or down.', note'Slide with your finger anywhere on the bar, not just on the sun.'},
+  {do'Swipe back up, or tap an empty part of the screen, to close the panel.'}
+ ],
+ note{h'The screen dims by itself outdoors', p'Phones dim automatically when they overheat in the sun. Move into shade for a few minutes and the brightness returns.'}},
+{id'see-timeout', cat'see', dev'any', title'Stop the screen turning off so quickly',
+ keys'screen off timeout sleep dims too fast reading recipe',
+ summary'Very useful when you are following a recipe or a set of instructions and your hands are busy.',
+ steps[
+  {do'On an iPhone {Settings}, {Display & Brightness}, {Auto-Lock}.'},
+  {do'Choose {3 Minutes} or {5 Minutes}.', note'Never is available but drains the battery quickly. Five minutes suits most people.'},
+  {do'On Android {Settings}, {Display}, {Screen timeout}.'},
+  {do'Choose a longer time from the list.'}
+ ]},
+{id'see-bold', cat'see', dev'iphone', title'Make the writing thicker and easier to see',
+ keys'bold text thin faint letters hard to read weight',
+ summary'Separate from size. If the letters are big enough but look faint and thin, this is the setting you want.',
+ steps[
+  {do'Open {Settings}, tap {Display & Brightness}.'},
+  {do'Turn on {Bold Text}.', note'The whole screen redraws for a second.'},
+  {do'Use this together with a larger text size if you need both.'}
+ ]},
+{id'see-magnifier', cat'see', dev'iphone', title'Use the phone as a magnifying glass', star1,
+ keys'magnifier magnify small print label menu read tiny writing medicine bottle',
+ summary'Turns the camera into a lit magnifier. Excellent for medicine labels, restaurant menus and instruction leaflets.',
+ steps[
+  {do'Open {Settings}, tap {Accessibility}, then {Magnifier}, and turn it on.'},
+  {do'Now swipe down from the middle of the home screen and type {Magnifier} to open it.'},
+  {do'Hold the phone above what you want to read and drag the slider to zoom in.'},
+  {do'Tap the {torch} icon to light it up.', note'This makes far more difference than the zoom does.'},
+  {do'Tap the {yellow circle} to freeze the image.', note'Freezing it means you can bring the phone close to your eyes and study it steadily, without your hand shaking.'}
+ ]},
+{id'see-magnifier-android', cat'see', dev'android', title'Read small print using an Android phone',
+ keys'magnifier magnify small print label camera zoom read tiny',
+ steps[
+  {do'Open the {Camera} app.'},
+  {do'Point it at the small print and pinch outwards to zoom in.'},
+  {do'Tap the {flash} icon and set it to on.', note'The light matters more than the zoom for reading a label.'},
+  {do'Take a photo, then open it in {Photos} and pinch to enlarge.', note'A still photo is much easier to read than a shaky live view.'}
+ ]},
+{id'see-ring-iphone', cat'see', dev'iphone', title'Make the ringer louder on an iPhone', star1,
+ keys'volume loud quiet cannot hear ring missed calls sound silent',
+ summary'If you are missing calls, the ringer volume is usually the cause — it is separate from the volume of music and videos.',
+ steps[
+  {do'Open {Settings}, tap {Sounds & Haptics}.'},
+  {do'Drag {Ringtone and Alert Volume} all the way right.'},
+  {do'Turn off {Change with Buttons}.', note'With this off, the side buttons cannot accidentally silence your ringer.'},
+  {do'Check the switch above the volume buttons.', note'An orange stripe means silent. Flick it the other way. Newer iPhones have a button here — press and hold it.'}
+ ],
+ note{h'Still silent', p'Look for a small crescent moon at the top of the screen. That is Do Not Disturb. Swipe down from the top-right corner and tap the moon to turn it off.'}},
+{id'see-ring-android', cat'see', dev'android', title'Make the ringer louder on an Android phone',
+ keys'volume loud quiet cannot hear ring missed calls sound silent',
+ steps[
+  {do'Press the {volume up} button once.'},
+  {do'Tap the small {three dots} or the arrow that appears beside the volume bar.', note'This opens all the separate volume controls.'},
+  {do'Drag the {Ringtone} slider all the way up.', note'Ringtone, media and alarm are three different volumes. Turning up music does nothing for your ringer.'},
+  {do'Check the phone is not on vibrate.', note'Look at the top of the screen for a small vibrating-phone symbol. Press volume up until it becomes a bell.'}
+ ]},
+{id'see-ringtone', cat'see', dev'iphone', title'Choose a ringtone you can actually hear',
+ keys'ringtone change sound ring tone loud hearing high pitched',
+ summary'Age-related hearing loss affects high notes first. Most default ringtones are high and chirpy, which is exactly the wrong choice.',
+ steps[
+  {do'Open {Settings}, tap {Sounds & Haptics}, then {Ringtone}.'},
+  {do'Tap each one to hear it.', note'Look for the older, lower-pitched ones near the bottom of the list.'},
+  {do'Choose one that sounds deep rather than bright.'},
+  {do'Also turn on {Vibrate on Ring} on the previous screen.', note'Feeling the phone is more reliable than hearing it, especially in a handbag or pocket.'}
+ ]},
+{id'see-captions', cat'see', dev'any', title'Turn on subtitles so you can read along',
+ keys'captions subtitles hard of hearing deaf youtube netflix words on screen',
+ steps[
+  {do'Start the video, then tap once in the middle of the screen.', note'The buttons appear over the video, then fade. Tap again to bring them back.'},
+  {do'Look for a small square marked {CC}, or a speech bubble.'},
+  {do'Tap it and choose {English}.'},
+  {do'If nothing appears, tap the three dots or the gear, then {Subtitles} or {Captions}.'}
+ ],
+ note{h'Making subtitles bigger', p'iPhone Settings, Accessibility, Subtitles & Captioning, Style. Android Settings, Accessibility, Caption preferences.'}},
+{id'see-hearingaid', cat'see', dev'any', title'Connect hearing aids to your phone',
+ keys'hearing aids bluetooth pair connect stream sound aid',
+ summary'Most hearing aids made in the last few years connect straight to a phone, so calls and videos play into the aids themselves.',
+ steps[
+  {do'Open and close the hearing aid battery doors, or put them in and out of the charger.', note'This puts them into pairing mode. They stay ready for about three minutes.'},
+  {do'On an iPhone {Settings}, {Accessibility}, {Hearing Devices}.', note'Not the ordinary Bluetooth screen. Made-for-iPhone aids appear only in this special list.'},
+  {do'On Android {Settings}, {Accessibility}, {Hearing aids}, then {Pair new device}.'},
+  {do'Tap your name when it appears, then confirm twice.', note'It asks once for each ear. Both requests are normal.'}
+ ],
+ note{h'Worth asking your audiologist', p'They can set this up in the clinic in five minutes and check the sound balance at the same time. Take the phone to your next appointment.'}},
+{id'see-readaloud', cat'see', dev'iphone', title'Have the iPhone read the screen out loud',
+ keys'speak read aloud voice listen article eyes tired spoken',
+ steps[
+  {do'{Settings}, {Accessibility}, {Spoken Content}.'},
+  {do'Turn on {Speak Screen}.'},
+  {do'Slide {Speaking Rate} to the left.', note'Most people find the default far too fast at first.'},
+  {do'To use it open anything, then swipe down from the very top with {two fingers}.', note'A small control panel appears with a pause button and speed arrows.'}
+ ]},
+
+ ======================= PHONE CALLS ======================= 
+{id'call-answer', cat'call', dev'any', title'Answer a call when the phone rings',
+ keys'answer pick up incoming call swipe green missed how to answer',
+ summary'The way you answer changes depending on whether the screen was already on. That is why it sometimes seems to work differently.',
+ steps[
+  {do'If the screen was off, you will see a {green circle} to slide.', note'Put your finger on it and slide right. Tapping it will not work.'},
+  {do'If the screen was already on, you will see a green {Accept} button.', note'Here you tap rather than slide.'},
+  {do'To refuse, slide or tap the {red} one.', note'The caller hears it stop ringing. They can still leave a voicemail.'},
+  {do'If you fumble it and the call is lost, tap {Recents} and tap their name to ring back.'}
+ ]},
+{id'call-make-iphone', cat'call', dev'iphone', title'Make a phone call on an iPhone',
+ keys'dial ring someone number call out phone make a call',
+ steps[
+  {do'Tap the green {Phone} icon with the white handset.'},
+  {do'To call someone you know tap {Contacts}, find their name, tap it, then tap their number.'},
+  {do'To dial a new number tap {Keypad} and type it in.', note'Then tap the big green circle underneath.'},
+  {do'To hang up tap the red circle.'}
+ ],
+ note{h'Calling someone back', p'Recents shows everyone who has called lately. Tap any name in that list to ring them straight back.'}},
+{id'call-make-android', cat'call', dev'android', title'Make a phone call on an Android phone',
+ keys'dial ring someone number call out phone make a call',
+ steps[
+  {do'Tap the {Phone} icon — a handset shape along the bottom row.'},
+  {do'Tap {Contacts}, find the name, tap it, then tap the phone icon.'},
+  {do'To dial a new number tap the round keypad button in the corner and type it.'},
+  {do'Tap the red circle to hang up.'}
+ ]},
+{id'call-speaker', cat'call', dev'any', title'Put a call on speaker so you can hear better',
+ keys'speakerphone loud hands free hear louder during call',
+ steps[
+  {do'Once connected, pull the phone away from your ear so the screen lights up.'},
+  {do'Tap the button marked {Speaker}.', note'A small loudspeaker shape. It lights up or changes colour when on.'},
+  {do'Set the phone on the table, screen up.', note'Do not cover the bottom edge — the sound comes out there.'},
+  {do'Tap {Speaker} again to go back to holding it at your ear.'}
+ ]},
+{id'call-contact', cat'call', dev'iphone', title'Save someone’s number so you don’t have to remember it',
+ keys'contact add save number address book new person store',
+ summary'Once saved, their name shows when they ring — which also makes calls from strangers obvious.',
+ steps[
+  {do'Open {Phone}, tap {Recents}.'},
+  {do'Find the number and tap the small {i} in a circle beside it.'},
+  {do'Tap {Create New Contact}.'},
+  {do'Type the first and last name, then tap {Done} in the top-right corner.'}
+ ],
+ note{h'Adding a photo', p'Open the contact, tap Edit, then Add Photo. Seeing a face when the phone rings makes it far easier to know who is calling.'}},
+{id'call-favourites', cat'call', dev'iphone', title'Put the people you ring most in one short list',
+ keys'favourites favorites quick call speed dial family shortcut',
+ summary'Saves scrolling through a long contact list every time you want your daughter.',
+ steps[
+  {do'Open {Phone} and tap {Favourites} at the bottom left.'},
+  {do'Tap the {+} in the top-right corner.'},
+  {do'Choose a person, then choose which of their numbers to use.'},
+  {do'Repeat for five or six people.', note'Keep the list short. The whole point is that everyone on it fits on one screen with no scrolling.'}
+ ]},
+{id'call-voicemail', cat'call', dev'any', title'Set up and listen to your voicemail',
+ keys'voicemail answerphone message greeting listen set up password',
+ steps[
+  {do'Open {Phone} and tap {Voicemail} in the bottom-right corner.'},
+  {do'The first time, tap {Set Up Now} and choose a four-digit code.', note'Write this code down somewhere. You will need it if you ever ring your voicemail from another phone.'},
+  {do'Record a short greeting, or choose {Default}.', note'Hello, you have reached Margaret, please leave a message is plenty. There is no need to give your number out.'},
+  {do'To listen tap {Voicemail}, then tap any message in the list, then tap {play}.'},
+  {do'Swipe left on a message and tap {Delete} to clear it.', note'A full mailbox stops taking new messages, so clear it out now and then.'}
+ ]},
+{id'call-block', cat'call', dev'iphone', title'Block a number that keeps calling',
+ keys'block stop unwanted spam nuisance cold caller silence',
+ steps[
+  {do'Open {Phone}, tap {Recents}.'},
+  {do'Tap the {i} beside the unwanted number.'},
+  {do'Scroll to the very bottom.'},
+  {do'Tap {Block this Caller}, then confirm.'}
+ ],
+ note{h'Why blocking often doesn’t help', p'Scam callers change numbers constantly. Silencing unknown callers works far better — see the next guide.'}},
+{id'call-silence-unknown', cat'call', dev'iphone', title'Stop unknown numbers from ringing at all', star1,
+ keys'spam robocall unknown callers silence stop nuisance calls peace',
+ summary'The single most effective thing you can do about nuisance calls. Anyone not in your contacts goes quietly to voicemail.',
+ steps[
+  {do'Open {Settings}, scroll down and tap {Phone}.'},
+  {do'Tap {Silence Unknown Callers} and turn it on.'},
+  {do'Make sure the people you want to hear from are saved in your contacts first.', note'This is the important part. Do it before turning the setting on, not after.'},
+  {do'Check your {Recents} list once a week.', note'Silenced calls still appear there, so you can see if the surgery or a delivery driver tried to reach you.'}
+ ],
+ note{h'Expecting an important call', p'Turn this off for the day if you are waiting to hear from a hospital, a tradesman, or anyone who might ring from a number you don’t have.'}},
+{id'call-dnd', cat'call', dev'any', title'Turn off Do Not Disturb when calls have gone silent',
+ keys'do not disturb focus moon silent no calls missed nothing rings',
+ summary'A common accident. One stray tap turns it on, and the phone goes quiet for days.',
+ steps[
+  {do'Look at the top of the screen for a small {crescent moon}.', note'That symbol means Do Not Disturb is on.'},
+  {do'On an iPhone swipe down from the top-right corner, then tap the {moon} or {Focus} button to turn it off.'},
+  {do'On Android swipe down from the top and tap the {moon} or {Do not disturb} tile.'},
+  {do'Check there is no schedule set.', note'iPhone Settings, Focus, Do Not Disturb, and look for a schedule. Turning off a schedule stops it coming back every evening.'}
+ ]},
+{id'call-sos', cat'call', dev'iphone', title'Set up emergency contacts and medical information', star1,
+ keys'emergency sos medical id ambulance help fall contacts allergies',
+ summary'Paramedics are trained to check this. It shows on the locked screen without needing your passcode, so it works even if you cannot speak.',
+ steps[
+  {do'Open the {Health} app — a white icon with a red heart.'},
+  {do'Tap your {picture} in the top-right corner, then tap {Medical ID}.'},
+  {do'Tap {Edit} and fill in your conditions, medications, allergies and blood type.', note'Include anything a paramedic would need in the first two minutes blood thinners, a pacemaker, epilepsy, severe allergies.'},
+  {do'Scroll down and add {Emergency Contacts}.', note'Add the person, then choose their relationship to you. If you ever call emergency services, these people are texted your location automatically.'},
+  {do'Turn on {Show When Locked}, then tap {Done}.', note'This is the setting that makes the whole thing worth doing. Without it, nobody can see the information.'}
+ ]},
+{id'call-sos-android', cat'call', dev'android', title'Set up emergency information on an Android phone',
+ keys'emergency sos medical id ambulance help contacts allergies safety',
+ steps[
+  {do'Open {Settings} and tap {Safety & emergency}.', note'On some phones this sits under About phone, then Emergency information.'},
+  {do'Tap {Medical information} and fill in your conditions, medicines and allergies.'},
+  {do'Go back and tap {Emergency contacts}, then add family.'},
+  {do'Check it works lock the phone, then on the lock screen tap {Emergency}, then {Emergency information}.', note'If you can read your details there without unlocking, it is set up correctly.'}
+ ]},
+
+ ==================== TEXTING AND PHOTOS ==================== 
+{id'text-send', cat'text', dev'any', title'Send a text message',
+ keys'sms text message write send typing new message',
+ steps[
+  {do'Open the {Messages} app — a speech bubble.'},
+  {do'Tap the {pencil} icon or the {+} button to start a new message.'},
+  {do'Type the first letters of the personu2019s name in the {To} line, then tap their name.'},
+  {do'Tap the wide box at the bottom and type your message.'},
+  {do'Tap the {arrow} to send.'}
+ ],
+ note{h'Replying is simpler', p'To answer a message you already have, just tap it in the list, type in the box, press the arrow. No need to start a new one.'}},
+{id'text-photo', cat'text', dev'any', title'Send a photo to someone in a text',
+ keys'picture attach send photo image share grandchildren',
+ steps[
+  {do'Open {Messages} and tap the conversation with that person.'},
+  {do'Tap the {+} or the small camera or picture icon beside the typing box.'},
+  {do'Tap {Photos}, then tap the photo you want.', note'Your most recent photos appear first.'},
+  {do'Tap the send arrow.', note'Photos take a few seconds to send. Delivered appears underneath when it has gone.'}
+ ]},
+{id'text-camera', cat'text', dev'any', title'Take a photo that isn’t blurry',
+ keys'camera photo take picture blurry focus shaky bad photos',
+ steps[
+  {do'Open the {Camera} app.'},
+  {do'Tap the screen on the thing you want in focus.', note'A small yellow or white square appears there. This is the single biggest improvement most people can make.'},
+  {do'Hold the phone with {both hands} and tuck your elbows against your ribs.', note'Blur is nearly always movement, not the camera. Bracing your arms fixes it.'},
+  {do'Breathe out, then press the round button.'},
+  {do'Press the round button and hold to take a burst of shots.', note'Useful with children and animals. Pick the good one afterwards.'}
+ ]},
+{id'text-scan', cat'text', dev'iphone', title'Scan a letter or form into your phone',
+ keys'scan document letter form pdf send paperwork copy',
+ summary'Produces a clean, straight, cropped copy — much better than a photograph, and it can be emailed as a proper document.',
+ steps[
+  {do'Open the {Notes} app and start a new note with the pencil icon.'},
+  {do'Tap the {camera} icon above the keyboard, then {Scan Documents}.'},
+  {do'Hold the phone flat above the page.', note'A yellow outline snaps to the edges of the paper and it takes the picture on its own. Keep still until it does.'},
+  {do'Scan more pages if you need to, then tap {Save}.'},
+  {do'To send it tap the {share} icon — a box with an arrow — then choose Mail or Messages.'}
+ ]},
+{id'text-group', cat'text', dev'any', title'Cope with a busy group message',
+ keys'group chat text family too many notifications mute leave reply',
+ steps[
+  {do'Your reply goes to {everyone} in the group, always.', note'There is no way to reply to just one person from inside a group message. Open a separate conversation with them instead.'},
+  {do'To quiet a busy group without leaving it press and hold the conversation in the list.'},
+  {do'Tap {Hide Alerts} on an iPhone, or {Mute} on Android.', note'Messages still arrive. The phone just stops making a noise about each one.'},
+  {do'To leave entirely, open the group, tap the name at the top, and look for {Leave this Conversation}.', note'Everyone can see that you left. It is worth muting instead if you would rather avoid the conversation about it.'}
+ ]},
+{id'text-photos-find', cat'text', dev'any', title'Find a photo you took a while ago',
+ keys'photos gallery album lost picture find old search',
+ steps[
+  {do'Open the {Photos} app.'},
+  {do'Tap the {Search} icon — a magnifying glass.'},
+  {do'Type what was in the photo, or where you were.', note'Try beach, birthday, dog, or a town name. The phone recognises what is in your pictures.'},
+  {do'Tap a result to open it full size.'}
+ ]},
+{id'text-backup', cat'text', dev'any', title'Make sure your photos are safe if the phone is lost', star1,
+ keys'backup photos icloud google photos safe lost broken save memories',
+ summary'Photos are the one thing on a phone that cannot be replaced. This takes five minutes once and then looks after itself.',
+ steps[
+  {do'On an iPhone {Settings}, tap {your name} at the top, then {iCloud}, then {Photos}.'},
+  {do'Turn on {Sync this iPhone}.', note'Every photo now copies to Apple automatically whenever you are on Wi-Fi.'},
+  {do'On Android open {Google Photos}, tap your picture, then {Photos settings}, then {Backup}.'},
+  {do'Turn backup on and set it to {over Wi-Fi only}.'},
+  {do'Leave the phone charging on Wi-Fi overnight the first time.', note'The first backup can take many hours if you have thousands of photos. After that it keeps up on its own.'}
+ ],
+ note{h'When it says storage is full', p'The free allowance is small — 5GB with Apple, 15GB with Google. A larger plan is usually a pound or two a month. For most people this is the single most worthwhile thing they pay for on a phone.'}},
+{id'text-delete-photos', cat'text', dev'any', title'Delete photos you don’t want',
+ keys'delete photos remove clear space blurry duplicate tidy',
+ steps[
+  {do'Open {Photos} and tap {Select} in the top-right corner.'},
+  {do'Tap each photo you want gone.', note'A tick appears on each one. You can also drag your finger across several at once.'},
+  {do'Tap the {bin} icon.'},
+  {do'Empty {Recently Deleted} to actually free the space.', note'Deleted photos sit there for 30 days first. Photos, Albums, scroll to the bottom, Recently Deleted.'}
+ ]},
+{id'text-share-album', cat'text', dev'iphone', title'Share a whole album with family',
+ keys'shared album family photos grandchildren share many photos',
+ summary'Better than texting fifty photos one at a time. Family can also add their own, so you see new pictures of the grandchildren without asking.',
+ steps[
+  {do'Open {Photos}, tap {Albums}, then the {+} in the corner.'},
+  {do'Tap {New Shared Album} and give it a name.'},
+  {do'Type the names of the family you want to invite, then tap {Create}.'},
+  {do'Open the album and tap {+} to add photos.'},
+  {do'They get a notification and can add photos of their own.'}
+ ]},
+
+ ======================= VIDEO CALLS ======================= 
+{id'video-facetime', cat'video', dev'iphone', title'Make a video call with FaceTime',
+ keys'facetime video call see face grandchildren apple',
+ summary'FaceTime only works between Apple devices. If the other person has an Android phone, use WhatsApp instead.',
+ steps[
+  {do'Open the {FaceTime} app — green with a white video camera.'},
+  {do'Tap {New FaceTime} or the {+} at the top.'},
+  {do'Type the personu2019s name and tap it when it appears.'},
+  {do'Tap the green {FaceTime} button.'},
+  {do'Hold the phone at chest height or above, not below your chin.'}
+ ]},
+{id'video-whatsapp', cat'video', dev'any', title'Make a video call with WhatsApp', star1,
+ keys'whatsapp video call free international abroad family android iphone',
+ summary'Works between any two phones, Apple or Android, and calls are free over Wi-Fi — including to other countries.',
+ steps[
+  {do'Open {WhatsApp} and tap {Chats}.'},
+  {do'Tap the name of the person you want.'},
+  {do'Tap the {video camera} icon in the top-right corner.'},
+  {do'Wait for them to answer.', note'You will see yourself in a small box while it rings.'},
+  {do'Tap the red circle to hang up.'}
+ ],
+ note{h'If the picture keeps freezing', p'Move closer to your Wi-Fi router, or tap the video camera icon during the call to turn the picture off and carry on as a voice call.'}},
+{id'video-zoom', cat'video', dev'any', title'Join a Zoom meeting someone sent you',
+ keys'zoom meeting link join click invitation group class church',
+ summary'You do not need an account and you do not need to sign up. The link does everything.',
+ steps[
+  {do'Find the message or email with the link — long blue underlined writing.'},
+  {do'Tap the link once.'},
+  {do'If asked, tap {Open} or {Download} to get the Zoom app.', note'Only happens the first time. Takes a minute or two.'},
+  {do'Type your name if asked, then tap {Join}.'},
+  {do'Tap {Join with Video} and {Call using Internet Audio}.', note'To stay unseen, tap Join without Video. You can still see and hear everyone else.'}
+ ],
+ note{h'Nobody can hear you', p'Look bottom-left for a microphone with a red line through it. Tap it once. This is the most common problem in any video call, and it happens to everyone.'}},
+{id'video-meet', cat'video', dev'any', title'Join a Google Meet call',
+ keys'google meet video call link join meeting hangouts',
+ steps[
+  {do'Tap the link in the invitation.', note'Google Meet links start with meet.google.com.'},
+  {do'If it opens in a browser, tap {Join} — you do not need to install anything on a computer.'},
+  {do'On a phone, tap {Open} to use the Meet app.'},
+  {do'Check the microphone and camera icons at the bottom.', note'If either has a line through it, tap it to turn it back on.'},
+  {do'Tap {Ask to join} and wait to be let in.'}
+ ]},
+{id'video-look', cat'video', dev'any', title'Make yourself easier to see on a video call',
+ keys'video call ceiling dark cannot see me lighting propping camera angle',
+ summary'Small adjustments that make a large difference to the person on the other end.',
+ steps[
+  {do'Sit facing a {window}, not with your back to it.', note'A bright window behind you turns you into a black shape. This is the commonest problem by far.'},
+  {do'Prop the phone against something at eye level.', note'A stack of books works. Holding it means a tired arm and a wobbling picture within two minutes.'},
+  {do'Look at the {camera lens}, not at the picture of the other person.', note'The lens is the little dot at the top of the screen. Looking there is what makes it feel like eye contact.'},
+  {do'Turn on a lamp in front of you if the room is dim.'},
+  {do'Avoid sitting directly under a ceiling light.', note'It casts shadows downward and hides your eyes.'}
+ ]},
+
+ ========================== EMAIL ========================== 
+{id'mail-send', cat'mail', dev'any', title'Write and send an email',
+ keys'email send compose write new message gmail outlook',
+ steps[
+  {do'Open your email app — Mail, Gmail, or Outlook.'},
+  {do'Tap the {pencil} icon or {Compose}.'},
+  {do'In the {To} line, type the address.', note'Email addresses always have an @ in the middle and never contain spaces.'},
+  {do'Tap {Subject} and type a few words about what it is about.'},
+  {do'Tap the big empty area and type your message.'},
+  {do'Tap the {send arrow}.'}
+ ]},
+{id'mail-reply', cat'mail', dev'any', title'Reply, Reply All, and Forward — which to use',
+ keys'reply all forward respond answer email everyone difference',
+ summary'Choosing the wrong one is the commonest email mistake, and occasionally an embarrassing one.',
+ steps[
+  {do'{Reply} sends only to the person who wrote to you.', note'This is what you want almost every time.'},
+  {do'{Reply All} sends to everyone who received the original.', note'Only use this when everybody genuinely needs the answer. Check the To line before sending.'},
+  {do'{Forward} sends a copy on to somebody new.', note'Remember that everything below your message goes too, including anything private further down the chain. Scroll down and check before you send.'},
+  {do'The buttons are usually behind the {arrow} icon or the three dots at the top of an open email.'}
+ ]},
+{id'mail-attach', cat'mail', dev'any', title'Attach a photo or document to an email',
+ keys'attach attachment file photo document send paperclip',
+ steps[
+  {do'Start a new email.'},
+  {do'Tap the {paperclip} icon.', note'On some apps you must tap in the message area first to make it appear.'},
+  {do'Choose {Photos} for a picture or {Files} for a document.'},
+  {do'Tap the item. Its name appears at the bottom of your email.'},
+  {do'Finish the message and send.', note'Large attachments take longer. If it seems stuck, give it a minute.'}
+ ],
+ note{h'If it says the file is too large', p'Most email will not carry more than about 25 megabytes. Send a batch of photos across several emails rather than all at once.'}},
+{id'mail-spam', cat'mail', dev'any', title'Find an email that never arrived',
+ keys'missing email lost junk spam folder cannot find not received',
+ steps[
+  {do'Look for {Junk} or {Spam} in your folder list.', note'You may need to tap a back arrow or a menu of three lines to see the folders.'},
+  {do'Look through it for the missing message.', note'Junk folders empty themselves after about 30 days.'},
+  {do'If you find it, open it and tap {Not Junk}.', note'This moves it back and teaches the service to let that sender through in future.'},
+  {do'If it is not there, ask the sender to check the address they used.', note'One wrong letter and it goes nowhere.'}
+ ]},
+{id'mail-unsubscribe', cat'mail', dev'any', title'Stop shops and charities filling your inbox',
+ keys'unsubscribe junk marketing newsletters too many emails stop clutter',
+ summary'Worth doing properly once. An inbox with ten real emails in it is one where you notice the important ones.',
+ steps[
+  {do'Open one of the unwanted emails and scroll to the very bottom.'},
+  {do'Look for small writing that says {Unsubscribe}.', note'It is deliberately faint and tiny. It is legally required to be there.'},
+  {do'Tap it, and confirm on the page that opens if asked.', note'It can take a few days to take effect.'},
+  {do'Some apps show an {Unsubscribe} link at the very top instead.', note'Gmail does this. Much easier when it appears.'},
+  {do'Only unsubscribe from senders you actually recognise.', note'On a genuine scam email, clicking unsubscribe just confirms your address is real. Mark those as junk instead.'}
+ ]},
+{id'mail-delete-many', cat'mail', dev'any', title'Clear out thousands of old emails',
+ keys'delete many emails clear inbox tidy thousands unread bulk',
+ steps[
+  {do'Use the {search} box to gather them first.', note'Search for a sender you get a lot from, so you are deleting one type of thing rather than everything.'},
+  {do'Tap {Edit} or {Select}, then tap the first one.'},
+  {do'Scroll to the bottom and press and hold the last one, or use {Select All}.'},
+  {do'Tap the {bin}.'},
+  {do'Do it in batches by sender rather than all at once.', note'Safer, and you are much less likely to throw away something you needed.'}
+ ]},
+{id'mail-password', cat'mail', dev'any', title'Get back into an email account you’re locked out of',
+ keys'forgot password locked out cannot sign in reset email recover account',
+ steps[
+  {do'On the sign-in page, tap {Forgotten password}.'},
+  {do'Type your email address and continue.'},
+  {do'Choose where to receive the code — usually a text to your phone.', note'If the phone number shown is an old one you no longer have, stop and bring this to us. There is a longer recovery process and it needs care.'},
+  {do'Type in the code, then choose a new password.', note'Three or four unrelated words joined together. Write it down somewhere safe at home.'},
+  {do'Never give that code to anyone who rings you.', note'A caller asking you to read out a code is a scam, without exception.', }
+ ]},
+
+ ==================== WI-FI AND INTERNET ==================== 
+{id'net-wifi-iphone', cat'net', dev'iphone', title'Connect an iPhone to Wi-Fi', star1,
+ keys'wifi wireless internet connect network password join',
+ steps[
+  {do'Open {Settings}, tap {Wi-Fi}.'},
+  {do'Make sure the switch at the top is green.'},
+  {do'Tap the name of your network.', note'At home, the name is usually on a sticker underneath the router box.'},
+  {do'Type the password exactly as printed.', note'Capital letters matter. So does the difference between 0 and O, and between 1 and l.'},
+  {do'Tap {Join}.', note'A tick appears when it works. The phone reconnects on its own from now on.'}
+ ]},
+{id'net-wifi-android', cat'net', dev'android', title'Connect an Android phone to Wi-Fi',
+ keys'wifi wireless internet connect network password join',
+ steps[
+  {do'Open {Settings}, tap {Connections} or {Network & internet}.'},
+  {do'Tap {Wi-Fi} and check the switch is on.'},
+  {do'Tap your network in the list.'},
+  {do'Type the password, then tap {Connect}.', note'Tap the small eye icon to see what you have typed and check it.'}
+ ]},
+{id'net-broken', cat'net', dev'any', title'What to do when the internet stops working', star1,
+ keys'no internet not working broken offline down router reset slow',
+ summary'Work through these in order. The first two fix it most of the time.',
+ steps[
+  {do'Check whether it is one device or all of them.', note'If the tablet works but the computer does not, the problem is the computer.'},
+  {do'Turn the router off at the wall, wait a full {30 seconds}, turn it back on.', note'The waiting matters. It lets the box clear itself properly.'},
+  {do'Wait {five minutes} without touching anything.', note'The lights flash in different patterns while it starts. Not ready until they settle.'},
+  {do'Check the lights.', note'Steady green or white usually means all is well. Red or orange usually means the fault is with your provider, not you.'},
+  {do'If a light is red, ring your provider.', note'Tell them which light and what colour. That saves a great deal of time on the call.'}
+ ],
+ note{h'Before you ring anyone', p'Keep your provideru2019s name and your account number written down near the router. They will ask, and hunting for it while on hold is miserable.'}},
+{id'net-search', cat'net', dev'any', title'Search for something on the internet',
+ keys'google search look up find internet browse web question',
+ steps[
+  {do'Open {Safari}, {Chrome}, or {Edge}.'},
+  {do'Tap the long bar at the top or bottom.'},
+  {do'Type your question in ordinary words and press {Go}.', note'A whole question works as well as short keywords.'},
+  {do'Tap a blue heading to read that page.'},
+  {do'Tap the {back arrow} to return to the list.'}
+ ],
+ note{h'Ignore results marked Sponsored or Ad', p'Those were paid for, not chosen as the best answers. Scroll past them to the ordinary results underneath.'}},
+{id'net-bookmark', cat'net', dev'any', title'Save a website so you can find it again',
+ keys'bookmark favourite save website shortcut home screen find again',
+ steps[
+  {do'Open the website you want to keep.'},
+  {do'Tap the {share} icon — a box with an arrow coming out of the top.', note'On Android, tap the three dots instead.'},
+  {do'Tap {Add Bookmark}, or {Add to Home Screen}.'},
+  {do'{Add to Home Screen} is usually better.', note'It puts the site among your apps as an icon you can simply tap, rather than buried in a bookmarks list.'},
+  {do'Give it a short name and tap {Add}.'}
+ ]},
+{id'net-public-wifi', cat'net', dev'any', title'Use café or hospital Wi-Fi safely',
+ keys'public wifi cafe hotel airport free safe secure library hospital',
+ summary'Public Wi-Fi is fine for ordinary use. The sensible caution is about what you do while on it, not whether you use it.',
+ steps[
+  {do'Choose the network from the list and connect.'},
+  {do'Wait for a page asking you to accept terms.', note'If nothing appears, open your browser and try any website — that usually triggers it.'},
+  {do'Only join networks whose name you have {confirmed with staff}.', note'Fake networks with plausible names like Free_Airport_WiFi are a genuine trick.'},
+  {do'Avoid banking while on public Wi-Fi.', note'Use your mobile data for that instead. Turn Wi-Fi off for a moment if you need to.'},
+  {do'Tell the phone to {Forget} the network when you leave.', note'Stops it rejoining automatically the next time you walk past.'}
+ ]},
+{id'net-bluetooth', cat'net', dev'any', title'Connect headphones, a speaker, or a car',
+ keys'bluetooth pair connect headphones speaker car hands free earbuds',
+ steps[
+  {do'Put the device into {pairing mode} first.', note'Usually holding its power button until a light flashes blue. Check its instructions — this step differs for everything.'},
+  {do'On the phone {Settings}, then {Bluetooth}, and make sure it is on.'},
+  {do'Wait for the device name to appear in the list, then tap it.'},
+  {do'If it asks for a code, try {0000} or {1234}.'},
+  {do'It should reconnect on its own in future.', note'If it does not, turn the device off and on again — it usually connects to the last thing it saw.'}
+ ]},
+{id'net-data', cat'net', dev'any', title'Understand the difference between Wi-Fi and mobile data',
+ keys'data wifi allowance bill mobile data usage expensive difference',
+ summary'Worth understanding once, because it explains most unexpectedly large phone bills.',
+ steps[
+  {do'{Wi-Fi} comes from your home router or a shop, and costs nothing extra.'},
+  {do'{Mobile data} comes through the phone network and comes out of a monthly allowance.'},
+  {do'Look at the top of your screen.', note'A fan-shaped symbol means Wi-Fi. Letters like 4G or 5G mean mobile data.'},
+  {do'Do large things on Wi-Fi.', note'Software updates, backing up photos, and watching video are what use data up. Ordinary messages and email use almost none.'},
+  {do'Check your usage iPhone {Settings}, {Mobile Data}. Android {Settings}, {Connections}, {Data usage}.'}
+ ]},
+{id'net-airplane', cat'net', dev'any', title'Use aeroplane mode (and why it fixes things)',
+ keys'airplane aeroplane mode flight signal no service fix connection',
+ summary'Also the fastest fix when the phone shows no signal in a place where it should have one.',
+ steps[
+  {do'Swipe down from the top corner of the screen to open the quick settings.'},
+  {do'Tap the {aeroplane} icon. It lights up.', note'All signals switch off — calls, mobile data and usually Wi-Fi.'},
+  {do'Wait {15 seconds}, then tap it again to turn it off.', note'The phone hunts for the network afresh. This clears up no service and connected but no internet surprisingly often.'},
+  {do'On a plane, leave it on but turn Wi-Fi back on separately if there is onboard Wi-Fi.'}
+ ]},
+{id'net-print', cat'net', dev'any', title'Print something from your phone',
+ keys'print printer phone wireless airprint document photo',
+ steps[
+  {do'Make sure the printer is on and on the {same Wi-Fi} as your phone.', note'This is the requirement people miss. A printer plugged into the computer by cable usually cannot be reached from a phone.'},
+  {do'Open what you want to print.'},
+  {do'Tap the {share} icon, then scroll down and tap {Print}.'},
+  {do'Tap {Select Printer} and choose yours from the list.'},
+  {do'Choose how many copies, then tap {Print}.', note'If your printer never appears in the list, it likely does not support wireless printing from phones. Email it to yourself and print from a computer instead.'}
+ ]},
+
+ ==================== EVERYDAY HELPERS ==================== 
+{id'daily-alarm', cat'daily', dev'any', title'Set an alarm',
+ keys'alarm wake up clock morning set time',
+ steps[
+  {do'Open the {Clock} app.'},
+  {do'Tap {Alarm} at the bottom, then the {+} in the corner.'},
+  {do'Roll the numbers up and down to set the time.', note'Swipe the hours and minutes separately. Check am and pm carefully — this is where mistakes happen.'},
+  {do'Tap {Repeat} to choose which days.'},
+  {do'Tap {Save}.', note'A small clock symbol appears at the top of your screen when any alarm is set.'}
+ ]},
+{id'daily-meds', cat'daily', dev'any', title'Set a reminder to take your medication', star1,
+ keys'medication reminder pills tablets remember alarm daily medicine',
+ summary'A repeating alarm is the simplest and most reliable method. Reminder apps are more elaborate but easier to ignore.',
+ steps[
+  {do'Open the {Clock} app and add a new alarm at the right time.'},
+  {do'Tap {Repeat} and select {every day}.'},
+  {do'Tap {Label} and write what it is for.', note'Blood pressure tablet appears on the screen when it goes off, which matters if you have several a day.'},
+  {do'Turn off {Snooze} for this one.', note'Snoozing a medication reminder is how doses get forgotten entirely. Better that it keeps sounding until you deal with it.'},
+  {do'Add a separate alarm for each time of day.'}
+ ],
+ note{h'A useful extra habit', p'Turn the alarm off only once the tablet is actually in your hand. Doing it while still in bed is how people lose track of whether they took it.'}},
+{id'daily-calendar', cat'daily', dev'any', title'Put an appointment in the calendar',
+ keys'calendar appointment diary date remember doctor event add',
+ steps[
+  {do'Open the {Calendar} app.'},
+  {do'Tap the date, then the {+} in the corner.'},
+  {do'Type what it is — Dr Patel, blood test.'},
+  {do'Set the time by tapping {Starts} and rolling the numbers.'},
+  {do'Tap {Alert} and choose {1 day before} as well as {1 hour before}.', note'Two reminders is the useful setting. A day ahead to prepare, an hour ahead to leave the house.'},
+  {do'Tap {Add} or {Save}.'}
+ ]},
+{id'daily-weather', cat'daily', dev'any', title'Check the weather before you go out',
+ keys'weather forecast rain temperature today tomorrow coat',
+ steps[
+  {do'Open the {Weather} app.'},
+  {do'The big number is now. The row underneath is the next few hours.', note'The hourly row is what you want when deciding whether to walk to the shops.'},
+  {do'Scroll down for the next ten days.'},
+  {do'Tap the {%} figures for the chance of rain.', note'60% means rain is likely somewhere in that hour, not that it rains for 60% of it.'},
+  {do'Add other places with the {list} icon.', note'Useful for keeping an eye on the weather where family live.'}
+ ]},
+{id'daily-voice', cat'daily', dev'any', title'Ask the phone to do things out loud', star1,
+ keys'siri google assistant voice hey siri ask question hands free speak',
+ summary'Faster than tapping for timers, calls and quick questions — and much easier if your hands or eyes are giving trouble.',
+ steps[
+  {do'On an iPhone {Settings}, {Siri}, then turn on {Listen for Hey Siri}.'},
+  {do'On Android open the {Google} app, tap your picture, then {Settings}, {Google Assistant}, {Hey Google}.'},
+  {do'Say Hey Siri or Hey Google, then wait a moment before speaking.', note'Waiting for the response is the trick. Speaking straight through means it misses the start of your sentence.'},
+  {do'Try simple things first.', note'Set a timer for ten minutes. Ring my daughter. What is the weather tomorrow How do you spell necessary'},
+  {do'Speak in ordinary sentences.', note'You do not need special phrasing or a slow robot voice. Talking normally works better.'}
+ ]},
+{id'daily-timer', cat'daily', dev'any', title'Set a kitchen timer',
+ keys'timer cooking kitchen minutes countdown egg oven',
+ steps[
+  {do'Open the {Clock} app and tap {Timer} at the bottom.'},
+  {do'Roll the numbers to the length you want.'},
+  {do'Tap {Start}.'},
+  {do'Easier still say {Hey Siri, set a timer for 20 minutes}.', note'This is the single best use of a voice assistant, especially with floury hands.'}
+ ]},
+{id'daily-notes', cat'daily', dev'any', title'Keep a shopping list or notes on the phone',
+ keys'notes list shopping reminder write down memo checklist',
+ steps[
+  {do'Open the {Notes} app.'},
+  {do'Tap the {pencil and paper} icon to start a new note.'},
+  {do'Type the first line as a title — Shopping.'},
+  {do'Tap the {checklist} icon above the keyboard to get tick boxes.', note'Then tapping an item ticks it off, which is much more satisfying in the supermarket than plain text.'},
+  {do'Use the {microphone} to add items by speaking.', note'Far quicker than typing while carrying a basket.'}
+ ]},
+{id'daily-calculator', cat'daily', dev'any', title'Work out a tip or a discount',
+ keys'calculator tip percentage discount maths sum work out',
+ steps[
+  {do'Open the {Calculator} app.'},
+  {do'For a 15% tip on £40 type {40}, then {×}, then {15}, then {%}.', note'The % key does the dividing by 100 for you.'},
+  {do'For 30% off a £60 coat type {60}, {−}, {30}, {%}.', note'That gives you the price after the discount, not the discount itself.'},
+  {do'Turn the phone {sideways} for a scientific calculator.'},
+  {do'Or just ask out loud.', note'Hey Siri, what is 15 percent of 40 works and is quicker.'}
+ ]},
+
+ ==================== OUT AND ABOUT ==================== 
+{id'out-directions', cat'out', dev'any', title'Get directions to somewhere',
+ keys'maps directions navigate drive walk route lost satnav google maps',
+ steps[
+  {do'Open {Maps} or {Google Maps}.'},
+  {do'Tap the search bar and type the address or the name of the place.'},
+  {do'Tap the blue {Directions} button.'},
+  {do'Choose the {car}, {walking}, {bus} or {bicycle} icon along the top.', note'The times change as you switch between them.'},
+  {do'Tap {Start} and follow the spoken directions.', note'Prop the phone somewhere you can see it, or just listen. Do not hold it while driving.'}
+ ]},
+{id'out-transit', cat'out', dev'any', title'Find out when the next bus or train goes',
+ keys'bus train times transit public transport timetable next departure',
+ steps[
+  {do'Open {Maps} and search for where you want to go.'},
+  {do'Tap {Directions}, then the {bus or train} icon.'},
+  {do'The list shows the next several departures with walking times included.', note'Leave by 241 accounts for the walk to the stop, which is the useful part.'},
+  {do'Tap one to see the stops along the way.'},
+  {do'Tap {Depart at} to plan a journey for later.'}
+ ]},
+{id'out-qr', cat'out', dev'any', title'Scan a QR code on a menu or a poster',
+ keys'qr code scan menu restaurant square pattern camera barcode',
+ summary'Those black-and-white squares are just a link. Your camera reads them — there is nothing to install.',
+ steps[
+  {do'Open the {Camera} app as if taking a photo.'},
+  {do'Point it at the square code.', note'Fill about half the frame with it. Do not press the shutter button.'},
+  {do'Wait for a yellow bar or a notification to appear across the screen.'},
+  {do'Tap that bar to open the page.'},
+  {do'Check the web address before typing anything into the page.', note'A menu code should lead to the restaurantu2019s own website. Never scan a code stuck onto a parking meter or a lamp post — those are frequently fakes placed over the real one.'}
+ ]},
+{id'out-findphone', cat'out', dev'any', title'Find a phone you’ve mislaid', star1,
+ keys'lost phone find my missing where is it locate ring stolen',
+ summary'Set this up now, while the phone is in your hand. It is no use setting it up after it goes missing.',
+ steps[
+  {do'On an iPhone {Settings}, tap {your name}, {Find My}, and turn on {Find My iPhone}.'},
+  {do'On Android {Settings}, {Security}, then turn on {Find My Device}.'},
+  {do'Write down the email address and password of that account.', note'You need it to sign in from another device later, which is precisely when you will not be able to look it up.'},
+  {do'To find it on any computer go to {icloud.comfind} or {google.comandroidfind} and sign in.'},
+  {do'Choose {Play Sound}.', note'It rings loudly even if you had it on silent. Most lost phones are down the side of an armchair.'}
+ ]},
+{id'out-share-location', cat'out', dev'any', title'Let family see where you are',
+ keys'share location family safety where am i track meet up find each other',
+ summary'Useful for reassurance in both directions — and for meeting someone in a crowded place.',
+ steps[
+  {do'On an iPhone open {Find My}, tap {People}, then {Share My Location}.'},
+  {do'On Android open {Google Maps}, tap your picture, then {Location sharing}.'},
+  {do'Choose the person and how long for.', note'You can pick one hour, or until you switch it off. One hour is plenty for meeting someone.'},
+  {do'They must agree on their end before it works.'},
+  {do'Turn it off whenever you like.', note'Sharing continues until you stop it. Check occasionally who is on your list.'}
+ ]},
+{id'out-translate', cat'out', dev'any', title'Translate a sign or a conversation',
+ keys'translate language foreign sign menu holiday abroad speak',
+ steps[
+  {do'Install {Google Translate} from the app store.'},
+  {do'Tap the {camera} icon and point it at a sign or a menu.', note'The English appears over the top of the original, live on the screen.'},
+  {do'Tap the {microphone} to translate speech.', note'Hand the phone to the other person when it is their turn to talk.'},
+  {do'Download the language before you travel.', note'Tap the language name, then the download arrow. It then works with no internet at all, which matters abroad.'}
+ ]},
+
+ ====================== STAYING SAFE ====================== 
+{id'safe-scam-call', cat'safe', dev'any', title'Recognise a scam phone call', star1,
+ keys'scam fraud fake call money police bank microsoft grandchild urgent',
+ summary'Scam calls all work the same way they create alarm, then ask you to act before you have had time to think.',
+ steps[
+  {do'Notice if the caller is creating {urgency}.', note'Act now. Your account closes today. Do not tell anyone. Real organisations never rush you like this.'},
+  {do'Notice if they want {money in an unusual form}.', note'Gift cards, bank transfer, cryptocurrency, cash by courier. No bank, government office or police force has ever asked to be paid in gift cards.'},
+  {do'Notice if they ask for a {code sent to your phone}.', note'Never read out a code to anyone who rings you. That code is the key to your account.'},
+  {do'Hang up. You do not owe them politeness.', note'You may put the phone down mid-sentence. This is the hardest step for most people and the most important one.'},
+  {do'Ring back on a number {you} looked up.', note'Use the number on your bank card or a letter. Never a number the caller gave you, and never press 1 to be transferred.'}
+ ],
+ note{h'If the caller claims to be a relative in trouble', p'Hang up and ring that relative on the number you already have. This scam is common and convincing, and voices can now be imitated from a few seconds of recording.', warntrue}},
+{id'safe-scam-text', cat'safe', dev'any', title'Recognise a scam text or email', star1,
+ keys'phishing scam text email fake link parcel delivery bank message',
+ summary'The aim is always to get you to tap a link and type your details into a page that looks genuine.',
+ steps[
+  {do'Be suspicious of a {missed parcel} or a {small unpaid fee}.', note'These two are the commonest by a wide margin. Real couriers do not ask for money by text.'},
+  {do'Look closely at the senderu2019s address.', note'Scam addresses are a jumble of letters, or a near miss — app1e with a number one, or amazon-security at an odd domain.'},
+  {do'Do not tap the link. Go to the site yourself.', note'Type the address in, or open the app you already have. If the message were real, the same information is waiting for you there.'},
+  {do'Delete it. Do not reply, even to say no.', note'Replying confirms your number is live and brings more of them.'}
+ ]},
+{id'safe-popup', cat'safe', dev'any', title'A pop-up says your computer is infected',
+ keys'virus popup warning infected microsoft support scam ring this number alarm',
+ summary'These are always fake. Real security software never gives you a telephone number to ring.',
+ steps[
+  {do'Do not ring the number. Ever.', note'This is the entire purpose of the pop-up. Microsoft and Apple do not put phone numbers on virus warnings.'},
+  {do'Do not click anything inside the pop-up, including the {X}.', note'The close button on a fake pop-up is often part of the trap.'},
+  {do'Close the whole browser instead.', note'On Windows hold Alt and press F4. On a Mac hold Command and press Q. On a phone, close the browser from the recent apps view.'},
+  {do'If the noise continues, restart the computer.'},
+  {do'It was a website, not an infection.', note'Once the browser is closed, it is gone. Your computer was never affected.'}
+ ]},
+{id'safe-remote', cat'safe', dev'any', title'Never let a caller control your computer',
+ keys'remote access teamviewer anydesk control computer scam refund tech support',
+ summary'This is the most damaging scam there is, because it hands over everything at once.',
+ steps[
+  {do'No legitimate company rings you {out of the blue} to fix your computer.', note'Not Microsoft, not Apple, not your internet provider, not your bank. Not ever.'},
+  {do'If asked to install anything so they can take a look, refuse and hang up.', note'Words like TeamViewer, AnyDesk, and remote support are the giveaway.'},
+  {do'Be especially wary of a {refund} that is too much.', note'They show you a doctored screen, claim they sent £5,000 instead of £500, and ask you to send the difference back. The refund never existed.'},
+  {do'If you have already let someone in turn the computer off now.', note'Unplug the network cable or turn off Wi-Fi first, then shut it down.'},
+  {do'Then ring your bank on the number on your card.'}
+ ],
+ note{h'Bring it to us', p'If this has happened, bring the computer in. It needs checking properly, and there is no judgement attached to it.', warntrue}},
+{id'safe-codes', cat'safe', dev'any', title'What those six-digit codes are for',
+ keys'two factor authentication code text verification security number login',
+ summary'They are a second lock on your accounts. Understanding them is what stops you handing one over.',
+ steps[
+  {do'A code arrives {only} when you are signing in to something.', note'If a code arrives when you were not signing in, someone else is trying to get into your account.'},
+  {do'Nobody — not a bank, not the police, not us — will ever ask you to read one out.', note'Every single request to share a code is a scam. There are no exceptions to this.'},
+  {do'If an unexpected code arrives, change that accountu2019s password.', note'Someone has your password already. The code is the only thing standing between them and your account.'},
+  {do'Turn codes on for your {email} first.', note'Your email can reset the password to everything else, so it is the one that matters most.'}
+ ]},
+{id'safe-padlock', cat'safe', dev'any', title'Check a website is what it claims to be',
+ keys'padlock secure https safe website fake shop check address bar genuine',
+ steps[
+  {do'Look at the {web address} at the top, not the look of the page.', note'Copying a page design takes minutes. The address is the part that cannot be faked.'},
+  {do'Read it from the {right} of the first single slash backwards.', note'In hsbc.co.uk.secure-login.info, the real site is secure-login.info, not HSBC. This trick catches careful people.'},
+  {do'A {padlock} means the connection is private, not that the company is honest.', note'Scam sites have padlocks too. It is a much weaker signal than people think.'},
+  {do'When shopping somewhere new, look for a real address and phone number.', note'No physical address anywhere on the site is a bad sign.'},
+  {do'Pay by {credit card} where you can.', note'Credit cards carry protections that bank transfers do not. Never pay a new online shop by bank transfer.'}
+ ]},
+{id'safe-romance', cat'safe', dev'any', title'When someone you’ve met online asks for money',
+ keys'romance scam dating money love online friend lonely widow send money',
+ summary'Painful to read, and worth reading anyway. These are patient, professional operations that target people who are lonely — which is not a character flaw.',
+ steps[
+  {do'Notice if they will never {video call} or meet.', note'There is always a reason — a job overseas, the army, an oil rig, poor internet. The reason changes; the refusal never does.'},
+  {do'Notice how quickly the affection arrives.', note'Declarations of love within a few weeks, from someone you have never seen, is the pattern.'},
+  {do'Any request for money is the answer, whatever the reason given.', note'A medical emergency, a customs fee, a plane ticket to come and see you. It is always a story and there is always another one after it.'},
+  {do'Search their photograph.', note'Save the picture, then go to images.google.com and upload it. Stolen photographs of soldiers and doctors show up immediately.'},
+  {do'Tell one person you trust before sending anything.', note'Saying it out loud to another human being is what breaks the spell. Scammers work hard to make you keep it secret — that is the tell.'}
+ ],
+ note{h'If it has already happened', p'Report it and tell someone. The money is often gone, but reporting stops them reaching the next person, and you will not be the first to walk through that door.', warntrue}},
+{id'safe-clicked', cat'safe', dev'any', title'What to do if you think you’ve been caught out', star1,
+ keys'clicked link scam gave details help hacked money what now emergency',
+ summary'Act quickly, but don’t panic — and don’t be embarrassed. These schemes are designed by professionals to fool careful people.',
+ steps[
+  {do'If you gave bank details, ring your bank {immediately}.', note'Use the number on the back of your card. Banks have a 24-hour fraud line and can often stop a payment still in progress.'},
+  {do'If you typed a password anywhere, change it now.', note'And change it anywhere else you used the same one.'},
+  {do'If you let someone control your computer, disconnect it from the internet and switch it off.'},
+  {do'Write down what happened while it is fresh.', note'Times, names, numbers, amounts. Your bank and the police will ask.'},
+  {do'Tell someone you trust.', note'A family member, or one of us at the centre. Scammers rely on people being too ashamed to tell anyone.'}
+ ],
+ note{h'You are not foolish', p'These schemes work on doctors, accountants and former bank managers. The only real mistake is staying quiet about it.', warntrue}},
+{id'safe-passwords', cat'safe', dev'any', title'Make a password you can remember but nobody can guess',
+ keys'password secure strong remember forgot login safe account',
+ summary'Length beats complication. A long password of ordinary words is far harder to break than a short one full of symbols.',
+ steps[
+  {do'Pick {three or four unrelated words} and join them.', note'copper-otter-lantern-nine is long, memorable, and very hard to guess.'},
+  {do'Use a {different} password for your email than for anything else.', note'Your email is the master key — anyone with it can reset everything else.'},
+  {do'Write your passwords in a notebook kept somewhere private at home.', note'This is genuinely sensible. A burglar in your house is a far smaller risk than a criminal abroad guessing a weak password.'},
+  {do'Never use a birthday, a petu2019s name, or anything on your Facebook page.'}
+ ]},
+{id'safe-privacy', cat'safe', dev'any', title'Check who can see what you post',
+ keys'facebook privacy settings public friends only who can see posts social',
+ steps[
+  {do'Open {Facebook}, tap the {three lines}, then {Settings & privacy}, then {Settings}.'},
+  {do'Tap {Privacy Checkup} and work through the sections.'},
+  {do'Set {Who can see your future posts} to {Friends}.'},
+  {do'Use {Limit past posts} to change everything you have already posted at once.'},
+  {do'Remove your birth year, address and phone number from your profile.', note'Those three items are exactly what someone needs to impersonate you to a bank.'}
+ ]},
+
+ ================= WHEN SOMETHING BREAKS ================= 
+{id'fix-restart', cat'fix', dev'any', title'Restart your phone (fixes a surprising amount)', star1,
+ keys'restart reboot turn off frozen stuck slow not working reset',
+ summary'If something is behaving oddly, try this first. It solves more problems than any other single step.',
+ steps[
+  {do'iPhone with no round button hold the {side button} and either {volume button} until a slider appears.', note'Drag the slider right. Wait 30 seconds, then hold the side button until the apple appears.'},
+  {do'iPhone with a round Home button hold just the {side button} until the slider appears.'},
+  {do'Android hold the {power button}, then tap {Restart}.', note'If you only see Power off, use that, wait 30 seconds, and turn it back on.'},
+  {do'Give it a minute or two to start up before trying anything.'}
+ ]},
+{id'fix-frozen', cat'fix', dev'any', title'An app has frozen and won’t respond',
+ keys'frozen stuck app not responding crash close force quit hang',
+ steps[
+  {do'Close the app rather than the whole phone.'},
+  {do'iPhone swipe up from the bottom and {pause} halfway.', note'The apps appear as cards. Do not swipe all the way up — pausing is what brings up the cards.'},
+  {do'Android swipe up from the bottom and hold, or tap the {square} button.'},
+  {do'Flick the frozen appu2019s card {up and off} the screen.'},
+  {do'Open it again from the home screen.', note'Nothing is lost by doing this. It is the ordinary way to close an app.'}
+ ]},
+{id'fix-storage', cat'fix', dev'iphone', title'Free up space when storage is full',
+ keys'storage full space photos delete cannot take photos memory update',
+ summary'A full phone will not take photos, install updates or receive messages properly. Photos and videos are almost always the cause.',
+ steps[
+  {do'{Settings}, {General}, {iPhone Storage}.', note'Wait for the coloured bar to fill in.'},
+  {do'Look at the list, sorted by how much room each app uses.'},
+  {do'Tap {Photos} and turn on {Optimise iPhone Storage}.', note'Keeps small copies on the phone and full-size ones in iCloud. Often frees several gigabytes on its own.'},
+  {do'Delete videos you no longer want.', note'One minute of video takes as much room as about a hundred photos. Videos are where the space actually goes.'},
+  {do'Empty {Recently Deleted} in Photos.', note'Deleted photos sit there for 30 days and take up room the whole time.'}
+ ]},
+{id'fix-storage-android', cat'fix', dev'android', title'Free up space on an Android phone',
+ keys'storage full space delete memory cannot download clean',
+ steps[
+  {do'{Settings}, {Battery and device care}, then {Storage}.', note'On some phones it is Settings, Storage.'},
+  {do'Tap {Clean now} or {Free up space} for the easy wins.'},
+  {do'Open {Google Photos}, tap your picture, then {Free up space}.', note'This removes photos already backed up safely. Only do it once you have checked backup is switched on.'},
+  {do'Look through {Downloads} and delete what you no longer need.'},
+  {do'Uninstall apps you never open.'}
+ ]},
+{id'fix-update', cat'fix', dev'any', title'Update your phone’s software',
+ keys'update software version ios android install security new',
+ summary'Updates repair security holes that scammers rely on. Doing them is one of the most useful safety habits there is.',
+ steps[
+  {do'Plug the phone in and connect to Wi-Fi first.', note'Updates are large. Do not attempt one on mobile data.'},
+  {do'iPhone {Settings}, {General}, {Software Update}.'},
+  {do'Android {Settings}, {Software update}, or {System}, then {System update}.'},
+  {do'Tap {Download and Install} and enter your passcode if asked.'},
+  {do'Then leave it alone.', note'The screen goes dark, shows a logo, and may restart more than once. This can take half an hour. Do not unplug it.'}
+ ]},
+{id'fix-charging', cat'fix', dev'any', title'When the phone won’t charge',
+ keys'charging battery dead not charging cable plug flat power',
+ summary'Nine times out of ten it is the cable or the socket in the phone, not the battery.',
+ steps[
+  {do'Try a {different cable} first.', note'Cables fail constantly, usually where they bend near the plug. Borrow one before buying anything.'},
+  {do'Try a {different wall socket}.'},
+  {do'Look into the charging hole with a bright light.', note'Pocket lint packs into that socket over the years and stops the cable seating. A very common cause.'},
+  {do'If you see lint, switch the phone off and clear it gently with a {wooden toothpick}.', note'Wood, not metal, and gently. Never a pin or a paperclip.'},
+  {do'Plug it in and leave it 20 minutes before judging.', note'A completely flat battery shows nothing at all on the screen for the first several minutes.'}
+ ]},
+{id'fix-battery', cat'fix', dev'any', title'The battery runs out too quickly',
+ keys'battery life drains fast dies quickly power saving old phone',
+ steps[
+  {do'Check the batteryu2019s health first.', note'iPhone Settings, Battery, Battery Health. Below about 80% it is worn and a replacement is worth considering.'},
+  {do'Turn the screen brightness down.', note'The screen uses more power than anything else on the phone by a wide margin.'},
+  {do'Turn on {Low Power Mode} or {Battery saver}.', note'iPhone Settings, Battery. Android Settings, Battery. Costs you very little in practice.'},
+  {do'Look at which app is using most.', note'The same Battery screen lists them in order. One misbehaving app is often the entire explanation.'},
+  {do'A replacement battery is far cheaper than a new phone.', note'Usually well under a hundred pounds at a repair shop, and it makes an old phone feel new.'}
+ ]},
+{id'fix-sideways', cat'fix', dev'any', title'The screen has turned sideways and won’t turn back',
+ keys'screen sideways rotation stuck landscape upside down orientation lock',
+ steps[
+  {do'Hold the phone upright and wait a moment.', note'If it does not swing back, rotation is locked.'},
+  {do'iPhone swipe down from the {top-right corner}.', note'On older iPhones with a Home button, swipe up from the bottom.'},
+  {do'Look for a {padlock inside a circular arrow} and tap it.', note'When it is highlighted, rotation is locked. Tapping turns the lock off.'},
+  {do'Android swipe down from the top and tap {Auto rotate}.'},
+  {do'Some apps only ever work one way round.', note'Many video apps stay sideways on purpose. That is not a fault.'}
+ ]},
+{id'fix-sound', cat'fix', dev'any', title'There’s no sound coming out',
+ keys'no sound silent cannot hear volume mute speaker broken audio',
+ steps[
+  {do'Check the silent switch or the vibrate setting first.'},
+  {do'Press {volume up} several times while a video is playing.', note'Playing something first matters — the volume buttons change whatever is currently active.'},
+  {do'Check nothing is connected by {Bluetooth}.', note'This is the usual culprit. The phone is happily playing into a headset in a drawer, or the car outside. Settings, Bluetooth, and disconnect.'},
+  {do'Unplug and replug any headphones.', note'A phone can get stuck thinking headphones are plugged in.'},
+  {do'Restart the phone.'}
+ ]},
+{id'fix-passcode', cat'fix', dev'any', title'You’ve forgotten your passcode',
+ keys'forgot passcode locked out pin cannot unlock disabled phone',
+ summary'There is no back door. This is deliberate — it is what stops a thief getting in. Prevention is the real answer here.',
+ steps[
+  {do'Take your time. Repeated wrong guesses lock the phone for longer each time.'},
+  {do'Try the codes you use elsewhere, and old ones.', note'Many people have set a code they used years ago without realising.'},
+  {do'If it says {Disabled}, the only route left is erasing and restoring it.', note'This is why the photo backup guide matters so much. With a backup you lose nothing. Without one, you lose everything on the phone.'},
+  {do'Bring it to us or to the shop rather than attempting it alone.'},
+  {do'Afterwards, write the new code down and leave it somewhere private at home.', note'Not in your wallet with the phone. A drawer at home is the right place.'}
+ ]},
+{id'fix-language', cat'fix', dev'any', title'The phone has changed to a language you can’t read',
+ keys'language changed wrong foreign cannot read settings menu reset',
+ summary'Alarming, and completely reversible. The settings sit in the same position regardless of the language, so you can navigate by shape.',
+ steps[
+  {do'Open {Settings} — the gear icon looks the same in every language.'},
+  {do'iPhone it is the {General} section, then the item with a globe or an A-in-a-box.', note'General is the second group down, and the language item is roughly a third of the way down that list.'},
+  {do'Android scroll near the {bottom} for the globe icon.'},
+  {do'Tap the first item in that screen and find {English} in the list.', note'Language names are written in their own language, so look for the word English itself.'},
+  {do'The phone changes back immediately.'}
+ ]},
+{id'fix-slow-computer', cat'fix', dev'windows', title'The computer has become very slow',
+ keys'slow computer laggy freezing pc speed up performance old',
+ steps[
+  {do'Restart it properly.', note'Click Start, then Power, then Restart. Not Shut down — modern Windows does not fully clear itself on shutdown, so Restart is genuinely different.'},
+  {do'Close browser tabs you are not using.', note'Each tab uses memory. Twenty open tabs will slow almost any computer.'},
+  {do'Check what starts up automatically.', note'Hold Ctrl, Shift and Escape together, then click the Startup tab. Disable anything you do not recognise as essential.'},
+  {do'Check there is free space on the hard disk.', note'Open File Explorer, click This PC. If the bar under the C drive is red, that alone will make it crawl.'},
+  {do'Let Windows finish its updates.', note'A computer part-way through an update is slow until it completes. Leave it on overnight.'}
+ ]}
+];
+
+ ============================================================
+   STATE
+   ============================================================ 
+const state = {route{name'home'}, device'all', query'', theme'light'};
+const SIZES = [19,21,24,28,32];
+let sizeIndex = 1;
+
+const view = document.getElementById('view');
+const catById = id = CATS.find(c = c.id === id);
+const guidesIn = id = GUIDES.filter(g = g.cat === id);
+const catColor = c = state.theme === 'dark'  c.d  state.theme === 'contrast'  '#000000'  c.c;
+
+function esc(s){
+  return String(s).replace([&']g, ch =
+    ({'&''&amp;','''&lt;','''&gt;','''&quot;',''&#39;'}[ch]));
+}
+function fmt(s){
+  return esc(s).replace({([^}]+)}g, 'span class=ui$1span');
+}
+function matchesDevice(g){
+  return state.device === 'all'  g.dev === state.device  g.dev === 'any';
+}
+function search(q){
+  const t = q.trim().toLowerCase();
+  if(!t) return [];
+  const words = t.split(s+);
+  return GUIDES.filter(g = {
+    if(!matchesDevice(g)) return false;
+    const hay = (g.title + ' ' + g.keys + ' ' + (g.summary'') + ' ' +
+      g.steps.map(s = s.do + ' ' + (s.note'')).join(' ') + ' ' +
+      (g.note  g.note.h + ' ' + g.note.p  '') + ' ' +
+      catById(g.cat).name).toLowerCase();
+    return words.every(w = hay.includes(w));
+  });
+}
+
+ ============================================================
+   RENDER
+   ============================================================ 
+function render(){
+  const r = state.route;
+  if(r.name === 'guide')         renderGuide(GUIDES.find(g = g.id === r.id));
+  else if(r.name === 'category') renderCategory(catById(r.id));
+  else                           renderHome();
+  view.focus({preventScrolltrue});
+  window.scrollTo(0,0);
+}
+
+function deviceBar(){
+  return 'div class=devicesspanShowing steps forspan' +
+    DEVICES.map(d = 'button class=tbtn dev data-dev=' + d.id + ' aria-pressed=' +
+      (state.device === d.id) + '' + esc(d.name) + 'button').join('') + 'div';
+}
+function searchBox(){
+  return 'div class=search-wrap' + icon('search') +
+    'input id=search type=search autocomplete=off ' +
+    'placeholder=Type what you want to do aria-label=Search all guides value=' +
+    esc(state.query) + 'div';
+}
+function itemRow(g, showCat){
+  return 'libutton class=item data-guide=' + g.id + '' +
+    'divdiv class=item-title' + esc(g.title) + 'div' +
+    'div class=item-cat' + (showCat  esc(catById(g.cat).name) + ' &middot; '  '') +
+    esc(DEVNAME[g.dev]) + 'divdiv' +
+    icon('arrow','item-arrow') + 'buttonli';
+}
+
+function renderHome(){
+  let html = 'h1What do you need help withh1' + searchBox() + deviceBar();
+
+  if(state.query.trim()){
+    const hits = search(state.query);
+    html += 'h2' + hits.length + ' guide' + (hits.length === 1  ''  's') +
+            ' for &ldquo;' + esc(state.query.trim()) + '&rdquo;h2';
+    html += hits.length
+       'ul class=list' + hits.map(g = itemRow(g,true)).join('') + 'ul'
+       'div class=emptystrongNothing found for those words.strong' +
+        'Try one word instead of a sentence &mdash; embiggerem, emwifiem, ' +
+        'emscamem, emphotosem. Or clear the box and browse the topics.div';
+    view.innerHTML = html;
+    wire();
+    return;
+  }
+
+  html += 'div class=grid' + CATS.map(c = {
+    const n = guidesIn(c.id).filter(matchesDevice).length;
+    return 'button class=cat data-cat=' + c.id + ' style=--catcolor' + catColor(c) + '' +
+      icon(c.icon,'cat-icon') + 'div class=cat-name' + esc(c.name) + 'div' +
+      'div class=cat-count' + n + ' guide' + (n === 1  ''  's') + 'divbutton';
+  }).join('') + 'div';
+
+  const stars = GUIDES.filter(g = g.star && matchesDevice(g));
+  if(stars.length){
+    html += 'h2Asked most oftenh2ul class=list' +
+            stars.map(g = itemRow(g,true)).join('') + 'ul';
+  }
+
+  view.innerHTML = html;
+  wire();
+}
+
+function renderCategory(c){
+  if(!c){ state.route = {name'home'}; return renderHome(); }
+  const gs = guidesIn(c.id).filter(matchesDevice);
+
+  let html = 'button class=back id=back' + icon('back') + 'Back to all topicsbutton';
+  html += 'h1' + esc(c.name) + 'h1' + deviceBar();
+  html += gs.length
+     'ul class=list' + gs.map(g = itemRow(g,false)).join('') + 'ul'
+     'div class=emptystrongNothing here for that device.strong' +
+      'Change the device above to Show all.div';
+
+  view.innerHTML = html;
+  wire();
+}
+
+function renderGuide(g){
+  if(!g){ state.route = {name'home'}; return renderHome(); }
+  const c = catById(g.cat);
+  const col = catColor(c);
+
+  let html = 'button class=back id=back data-cat=' + c.id + '' +
+             icon('back') + 'Back to ' + esc(c.name.toLowerCase()) + 'button';
+  html += 'h1' + esc(g.title) + 'h1';
+  html += 'div class=guide-meta' +
+    'span class=badge style=border-color' + col + ';color' + col + '' +
+    esc(c.name) + 'spanspan class=badge' + esc(DEVNAME[g.dev]) + 'spandiv';
+
+  if(g.summary) html += 'p class=summary' + fmt(g.summary) + 'p';
+
+  html += 'ol class=steps' + g.steps.map(s =
+    'lidiv class=step-do' + fmt(s.do) + 'div' +
+    (s.note  'div class=step-note' + fmt(s.note) + 'div'  '') + 'li').join('') + 'ol';
+
+  if(g.note){
+    html += 'div class=note' + (g.note.warn  ' warn'  '') + '' +
+      'p class=note-heading' + esc(g.note.h) + 'p' +
+      'p' + fmt(g.note.p) + 'pdiv';
+  }
+
+  html += 'div class=actionsbutton class=print id=print' +
+          icon('printer') + 'Print this guidebuttondiv';
+
+  const rel = guidesIn(g.cat).filter(x = x.id !== g.id && matchesDevice(x)).slice(0,6);
+  if(rel.length){
+    html += 'div class=relatedh2More on ' + esc(c.name.toLowerCase()) + 'h2' +
+            'ul class=list' + rel.map(x = itemRow(x,false)).join('') + 'uldiv';
+  }
+
+  view.innerHTML = html;
+  wire();
+}
+
+ ============================================================
+   EVENTS
+   ============================================================ 
+function wire(){
+  const s = document.getElementById('search');
+  if(s) s.addEventListener('input', e = {
+    const pos = e.target.selectionStart;
+    state.query = e.target.value;
+    renderHome();
+    const ns = document.getElementById('search');
+    ns.focus();
+    ns.setSelectionRange(pos,pos);
+  });
+
+  view.querySelectorAll('[data-dev]').forEach(b =
+    b.addEventListener('click', () = { state.device = b.dataset.dev; render(); }));
+
+  view.querySelectorAll('.cat[data-cat]').forEach(b =
+    b.addEventListener('click', () = {
+      state.route = {name'category', idb.dataset.cat};
+      render();
+    }));
+
+  view.querySelectorAll('[data-guide]').forEach(b =
+    b.addEventListener('click', () = {
+      state.route = {name'guide', idb.dataset.guide};
+      render();
+    }));
+
+  const back = document.getElementById('back');
+  if(back) back.addEventListener('click', () = {
+    state.route = back.dataset.cat  {name'category', idback.dataset.cat}  {name'home'};
+    render();
+  });
+
+  const p = document.getElementById('print');
+  if(p) p.addEventListener('click', () = window.print());
+}
+
+function applySize(){
+  document.documentElement.style.fontSize = SIZES[sizeIndex] + 'px';
+  document.getElementById('smaller').disabled = sizeIndex === 0;
+  document.getElementById('bigger').disabled  = sizeIndex === SIZES.length - 1;
+}
+document.getElementById('bigger').addEventListener('click', () = {
+  if(sizeIndex  SIZES.length - 1){ sizeIndex++; applySize(); }
+});
+document.getElementById('smaller').addEventListener('click', () = {
+  if(sizeIndex  0){ sizeIndex--; applySize(); }
+});
+
+document.querySelectorAll('.theme').forEach(b =
+  b.addEventListener('click', () = {
+    state.theme = b.dataset.theme;
+    document.documentElement.classList.toggle('dark', state.theme === 'dark');
+    document.documentElement.classList.toggle('contrast', state.theme === 'contrast');
+    document.querySelectorAll('.theme').forEach(x =
+      x.setAttribute('aria-pressed', String(x.dataset.theme === state.theme)));
+    render();
+  }));
+
+document.getElementById('home-link').addEventListener('click', () = {
+  state.route = {name'home'};
+  state.query = '';
+  render();
+});
+
+applySize();
+render();
+script
+body
+html
